@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+# Sitemap location
 Sitemap: https://tooolify.vercel.app/sitemap.xml
+
