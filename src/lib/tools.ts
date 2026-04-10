@@ -10,7 +10,8 @@ import {
   Binary,
   Hash,
   Link as LinkIcon,
-  ShieldAlert
+  ShieldAlert,
+  QrCode
 } from 'lucide-react';
 
 export interface Tool {
@@ -267,6 +268,15 @@ export const tools: Tool[] = [
     path: '/generator/uuid',
     keywords: ['uuid', 'guid', 'unique id', 'generator'],
   },
+  {
+    id: 'qr-code-generator',
+    name: 'QR Code Generator',
+    description: 'Create custom QR codes for URLs and text instantly.',
+    category: 'generator',
+    icon: QrCode,
+    path: '/generator/qr-code',
+    keywords: ['qr code', 'generator', 'custom', 'url'],
+  },
   // Security
   {
     id: 'hash-generator',
@@ -286,6 +296,35 @@ export const tools: Tool[] = [
     icon: Search,
     path: '/seo/meta-tags',
     keywords: ['seo', 'meta tags', 'header', 'optimization'],
+  },
+  {
+    id: 'lorem-ipsum',
+    name: 'Lorem Ipsum Generator',
+    description: 'Generate placeholder text for your designs and layouts.',
+    category: 'text',
+    icon: Type,
+    path: '/text/lorem-ipsum',
+    keywords: ['lorem ipsum', 'placeholder', 'dummy text', 'generator'],
+  },
+  // Converters
+  {
+    id: 'unit-converter',
+    name: 'Unit Converter',
+    description: 'Convert between length, weight, temperature, and more.',
+    category: 'converter',
+    icon: RefreshCw,
+    path: '/converter/unit',
+    keywords: ['unit', 'convert', 'length', 'weight', 'temperature'],
+  },
+  // Math
+  {
+    id: 'percentage-calculator',
+    name: 'Percentage Calculator',
+    description: 'Calculate percentages, increases, and decreases easily.',
+    category: 'math',
+    icon: Calculator,
+    path: '/math/percentage',
+    keywords: ['percentage', 'calculator', 'math', 'increase', 'decrease'],
   },
   // PDF Tools
   {

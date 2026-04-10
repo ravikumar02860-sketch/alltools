@@ -15,6 +15,16 @@ import { PasswordGenerator } from './pages/tools/PasswordGenerator';
 import { UuidGenerator } from './pages/tools/UuidGenerator';
 import { HashGenerator } from './pages/tools/HashGenerator';
 import { MetaTagGenerator } from './pages/tools/MetaTagGenerator';
+import { WordCounter } from './pages/tools/WordCounter';
+import { Base64 } from './pages/tools/Base64';
+import { MergePdf } from './pages/tools/MergePdf';
+import { SplitPdf } from './pages/tools/SplitPdf';
+import { CompressPdf } from './pages/tools/CompressPdf';
+import { PdfToWord } from './pages/tools/PdfToWord';
+import { LoremIpsum } from './pages/tools/LoremIpsum';
+import { UnitConverter } from './pages/tools/UnitConverter';
+import { PercentageCalculator } from './pages/tools/PercentageCalculator';
+import { QrCodeGenerator } from './pages/tools/QrCodeGenerator';
 import { NsfwDirectory } from './pages/nsfw/NsfwDirectory';
 import { NsfwCategoryPage } from './pages/nsfw/NsfwCategoryPage';
 import { About } from './pages/About';
@@ -37,6 +47,16 @@ export default function App() {
             <Route path="/generator/uuid" element={<UuidGenerator />} />
             <Route path="/security/hash" element={<HashGenerator />} />
             <Route path="/seo/meta-tags" element={<MetaTagGenerator />} />
+            <Route path="/text/word-counter" element={<WordCounter />} />
+            <Route path="/dev/base64" element={<Base64 />} />
+            <Route path="/pdf/merge" element={<MergePdf />} />
+            <Route path="/pdf/split" element={<SplitPdf />} />
+            <Route path="/pdf/compress" element={<CompressPdf />} />
+            <Route path="/pdf/to-word" element={<PdfToWord />} />
+            <Route path="/text/lorem-ipsum" element={<LoremIpsum />} />
+            <Route path="/converter/unit" element={<UnitConverter />} />
+            <Route path="/math/percentage" element={<PercentageCalculator />} />
+            <Route path="/generator/qr-code" element={<QrCodeGenerator />} />
             
             {/* NSFW AI Tools Section */}
             <Route path="/nsfw-ai-tools" element={<NsfwDirectory />} />
