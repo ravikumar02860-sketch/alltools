@@ -3,6 +3,11 @@ import { ToolPage } from '@/src/components/ToolPage';
 import { FileText, FileCode, Download, Loader2, Trash2, ArrowRight } from 'lucide-react';
 import { motion } from 'motion/react';
 
+import * as pdfjs from 'pdfjs-dist';
+
+// Set worker source
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+
 export const PdfToWord: React.FC = () => {
   const [file, setFile] = React.useState<File | null>(null);
   const [isProcessing, setIsProcessing] = React.useState(false);
@@ -14,14 +19,51 @@ export const PdfToWord: React.FC = () => {
     }
   };
 
-  const handleConvert = () => {
+  const handleConvert = async () => {
     if (!file) return;
     setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const loadingTask = pdfjs.getDocument({ data: arrayBuffer });
+      const pdf = await loadingTask.promise;
+      
+      let fullText = '';
+      for (let i = 1; i <= pdf.numPages; i++) {
+        const page = await pdf.getPage(i);
+        const textContent = await page.getTextContent();
+        const pageText = textContent.items
+          .map((item: any) => item.str)
+          .join(' ');
+        fullText += pageText + '\n\n';
+      }
+
+      // Create a simple .doc file (HTML format that Word can open)
+      const header = "<html xmlns:o='urn:schemas-microsoft-com:office:office' " +
+            "xmlns:w='urn:schemas-microsoft-com:office:word' " +
+            "xmlns='http://www.w3.org/TR/REC-html40'>" +
+            "<head><meta charset='utf-8'><title>Export HTML to Word</title></head><body>";
+      const footer = "</body></html>";
+      const sourceHTML = header + fullText.replace(/\n/g, '<br>') + footer;
+      
+      const blob = new Blob(['\ufeff', sourceHTML], {
+        type: 'application/msword'
+      });
+      
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = file.name.replace('.pdf', '.doc');
+      link.click();
+      URL.revokeObjectURL(url);
+
       setIsSuccess(true);
       setTimeout(() => setIsSuccess(false), 5000);
-    }, 3000);
+    } catch (error) {
+      console.error('Error converting PDF to Word:', error);
+      alert('Failed to convert PDF. Please ensure the file is a valid PDF.');
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
