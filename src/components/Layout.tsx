@@ -50,7 +50,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
                 <Zap size={18} fill="currentColor" />
               </div>
-              <span>OmniTools</span>
+              <span>Tooolify</span>
             </Link>
           </div>
 
@@ -195,7 +195,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <div className="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white">
                   <Zap size={18} fill="currentColor" />
                 </div>
-                <span>OmniTools</span>
+                <span>Tooolify</span>
               </Link>
               <p className="text-slate-500 text-sm max-w-sm leading-relaxed">
                 The ultimate collection of free online tools for developers, designers, and digital professionals. 
@@ -221,7 +221,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </div>
           </div>
           <div className="pt-8 border-t flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-xs">
-            <p>© 2026 OmniTools. All rights reserved.</p>
+            <p>© 2026 Tooolify. All rights reserved.</p>
             <div className="flex items-center gap-6">
               <a href="#" className="hover:text-slate-600">Twitter</a>
               <a href="#" className="hover:text-slate-600">LinkedIn</a>

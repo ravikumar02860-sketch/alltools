@@ -40,7 +40,7 @@ export const NsfwCategoryPage: React.FC<NsfwCategoryPageProps> = ({ categoryId: 
   return (
     <div className="min-h-screen bg-[#0a0c10] text-slate-300">
       <SEO 
-        title={`Best ${category.name} Tools (2026) - OmniTools`}
+        title={`Best ${category.name} Tools (2026) - Tooolify`}
         description={`Explore the top rated ${category.name} tools. Compare features, ratings, and find the best adult AI generators for your needs.`}
         canonical={`/nsfw/${categoryId}`}
       />
@@ -147,7 +147,7 @@ export const NsfwCategoryPage: React.FC<NsfwCategoryPageProps> = ({ categoryId: 
             <h3 className="text-xl font-bold">Safety Disclaimer</h3>
           </div>
           <p className="text-slate-400 leading-relaxed text-sm">
-            This category page lists third-party AI tools. OmniTools does not host adult content. 
+            This category page lists third-party AI tools. Tooolify does not host adult content. 
             Please ensure you are of legal age in your jurisdiction before accessing these services. 
             Use AI tools ethically and respect the privacy of others.
           </p>

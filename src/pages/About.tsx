@@ -40,8 +40,8 @@ export const About: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 space-y-20">
       <SEO 
-        title="About Us - OmniTools Mission & Values"
-        description="Learn about OmniTools, our mission to provide free digital utilities, and our commitment to user privacy and performance."
+        title="About Us - Tooolify Mission & Values"
+        description="Learn about Tooolify, our mission to provide free digital utilities, and our commitment to user privacy and performance."
         canonical="/about"
       />
 
@@ -60,7 +60,7 @@ export const About: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="text-xl text-slate-600 leading-relaxed"
         >
-          OmniTools was born out of a simple frustration: the internet is full of tools, 
+          Tooolify was born out of a simple frustration: the internet is full of tools, 
           but many are slow, cluttered with ads, or require unnecessary signups. 
           We built a better way.
         </motion.p>
@@ -93,7 +93,7 @@ export const About: React.FC = () => {
           <h2 className="text-3xl md:text-5xl font-black tracking-tight">Our Story</h2>
           <div className="space-y-6 text-slate-400 text-lg leading-relaxed">
             <p>
-              Started in 2024 as a small collection of text utilities, OmniTools has grown into a 
+              Started in 2024 as a small collection of text utilities, Tooolify has grown into a 
               comprehensive platform serving thousands of users daily. Our team is composed of 
               developers and designers who believe that the best tools should be invisible—they 
               should just work, instantly and securely.

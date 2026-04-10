@@ -22,7 +22,7 @@ export const NsfwDirectory: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#0a0c10] text-slate-300 selection:bg-indigo-500 selection:text-white">
       <SEO 
-        title="Best NSFW AI Tools (2026) - OmniTools"
+        title="Best NSFW AI Tools (2026) - Tooolify"
         description="Discover the best NSFW AI tools including AI image generators, AI girlfriend chatbots, face swap AI tools, and more. Explore top adult AI tools available online."
         canonical="/nsfw-ai-tools"
       />
@@ -162,7 +162,7 @@ export const NsfwDirectory: React.FC = () => {
             <h3 className="text-xl font-bold">Safety & Content Disclaimer</h3>
           </div>
           <p className="text-slate-400 leading-relaxed">
-            OmniTools is an AI tools directory. We list and review third-party AI services for informational purposes. 
+            Tooolify is an AI tools directory. We list and review third-party AI services for informational purposes. 
             <strong> This website does not host, store, or distribute adult content directly.</strong> 
             Users are responsible for following the terms of service and legal requirements of the individual tools listed. 
             Please use these tools responsibly and ethically.

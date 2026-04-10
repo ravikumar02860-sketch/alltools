@@ -9,12 +9,12 @@ export const Blog: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title="OmniTools Blog - Tutorials, Guides & Industry Insights" 
-        description="Stay updated with the latest in web development, SEO, and digital productivity with the OmniTools blog."
+        title="Tooolify Blog - Tutorials, Guides & Industry Insights" 
+        description="Stay updated with the latest in web development, SEO, and digital productivity with the Tooolify blog."
       />
 
       <div className="text-center space-y-4">
-        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">OmniTools Blog</h1>
+        <h1 className="text-4xl font-extrabold text-slate-900 tracking-tight">Tooolify Blog</h1>
         <p className="text-slate-600 max-w-2xl mx-auto">
           Expert guides, tool tutorials, and industry insights to help you work smarter.
         </p>

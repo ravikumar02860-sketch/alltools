@@ -32,7 +32,7 @@ Still a staple for handling binary data in text-based environments, a fast Base6
 For mobile integration and quick sharing, QR codes have seen a massive resurgence in 2026.
 
 Conclusion
-Having these tools accessible in one place, like OmniTools, allows you to focus on what matters most: building great software.`,
+Having these tools accessible in one place, like Tooolify, allows you to focus on what matters most: building great software.`,
     author: 'Alex Dev',
     date: '2026-04-01',
     category: 'Development',
@@ -42,7 +42,7 @@ Having these tools accessible in one place, like OmniTools, allows you to focus 
     id: 'seo-best-practices-for-tools-sites',
     title: 'SEO Best Practices for Online Tools Platforms',
     excerpt: 'Learn how to optimize your utility website for maximum search engine visibility and user engagement.',
-    content: `Building a tools site is one thing; getting it found is another. Here are the core SEO strategies we use at OmniTools:
+    content: `Building a tools site is one thing; getting it found is another. Here are the core SEO strategies we use at Tooolify:
 
 1. Structured Data (Schema.org)
 Implementing 'SoftwareApplication' and 'FAQPage' schema helps search engines understand your tools and can lead to rich snippets in search results.
@@ -82,7 +82,7 @@ export const contentCalendarTopics = [
   "How to build your own online tool platform",
   "SEO checklist for 2026: What's changed?",
   "The developer's guide to regex and text tools",
-  "Why we built OmniTools: Our journey",
+  "Why we built Tooolify: Our journey",
   "How to use our percentage calculator for financial planning",
   "The best placeholder generators for designers",
   "Binary, Hex, and Octal: A developer's cheat sheet"

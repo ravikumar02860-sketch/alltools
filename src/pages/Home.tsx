@@ -19,12 +19,12 @@ export const Home: React.FC = () => {
     <div className="space-y-12">
       <SEO 
         title="100+ Free Online Tools for Developers & Creators" 
-        description="Access the ultimate collection of free online utilities. From text manipulation to developer tools, OmniTools has everything you need in one place."
+        description="Access the ultimate collection of free online utilities. From text manipulation to developer tools, Tooolify has everything you need in one place."
         schema={{
           "@context": "https://schema.org",
           "@type": "WebApplication",
-          "name": "OmniTools",
-          "url": "https://omnitools.com",
+          "name": "Tooolify",
+          "url": "https://tooolify.vercel.app",
           "description": "A comprehensive platform offering over 100 free online tools.",
           "applicationCategory": "UtilityApplication",
           "operatingSystem": "All"
@@ -189,7 +189,7 @@ export const Home: React.FC = () => {
 
       {/* SEO Content Section */}
       <section className="prose prose-slate max-w-none bg-white p-8 md:p-12 rounded-3xl border border-slate-100">
-        <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose OmniTools?</h2>
+        <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose Tooolify?</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h3 className="text-xl font-bold text-slate-900 mb-3">Fast & Efficient</h3>

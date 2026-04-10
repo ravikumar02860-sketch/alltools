@@ -76,7 +76,7 @@ Simply fill out the form and copy the generated code into the <head> section of 
                 type="text" 
                 value={tags.title}
                 onChange={(e) => setTags({...tags, title: e.target.value})}
-                placeholder="e.g. OmniTools - Free Online Utilities"
+                placeholder="e.g. Tooolify - Free Online Utilities"
                 className="w-full px-4 py-2 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-indigo-500 outline-none transition-all"
               />
             </div>

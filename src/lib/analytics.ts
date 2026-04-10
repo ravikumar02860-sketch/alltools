@@ -1,5 +1,5 @@
 /**
- * Analytics utility for OmniTools
+ * Analytics utility for Tooolify
  * In a production environment, this would integrate with GA4 or a custom backend.
  */
 

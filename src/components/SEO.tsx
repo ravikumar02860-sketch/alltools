@@ -15,10 +15,10 @@ export const SEO: React.FC<SEOProps> = ({
   description, 
   canonical, 
   ogType = 'website', 
-  ogImage = 'https://picsum.photos/seed/omnitools/1200/630',
+  ogImage = 'https://picsum.photos/seed/tooolify/1200/630',
   schema 
 }) => {
-  const siteName = 'OmniTools';
+  const siteName = 'Tooolify';
   const fullTitle = `${title} | ${siteName}`;
 
   return (

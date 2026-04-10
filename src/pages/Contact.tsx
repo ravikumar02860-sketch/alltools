@@ -27,8 +27,8 @@ export const Contact: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12 space-y-20">
       <SEO 
-        title="Contact Us - Get in Touch with OmniTools"
-        description="Have questions, feedback, or tool requests? Contact the OmniTools team. We're here to help you optimize your digital workflow."
+        title="Contact Us - Get in Touch with Tooolify"
+        description="Have questions, feedback, or tool requests? Contact the Tooolify team. We're here to help you optimize your digital workflow."
         canonical="/contact"
       />
 
@@ -154,7 +154,7 @@ export const Contact: React.FC = () => {
               </div>
               <div>
                 <div className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-1">Email Us</div>
-                <div className="text-xl font-bold text-slate-900">support@omnitools.com</div>
+                <div className="text-xl font-bold text-slate-900">support@tooolify.vercel.app</div>
               </div>
             </div>
           </div>
