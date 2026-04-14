@@ -42,25 +42,29 @@ export const MergePdf: React.FC = () => {
     <ToolPage
       toolId="merge-pdf"
       category="pdf"
-      title="Merge PDF"
-      description="Combine multiple PDF files into one document in seconds. Easy to use, secure, and works in your browser."
-      longDescription={`Merging PDF files is a common task for professionals and students alike. Whether you're combining reports, gathering receipts, or organizing research papers, our Merge PDF tool makes it effortless.
+      title="Merge PDF Online - Combine PDF Files for Free"
+      description="Combine multiple PDF files into one document in seconds. Our free online PDF merger is easy to use, secure, and works directly in your browser without any software installation."
+      keywords={['merge pdf online', 'combine pdf files', 'join pdf documents', 'free pdf merger', 'online pdf joiner', 'merge multiple pdfs', 'pdf binder']}
+      longDescription={`Merging PDF files is a common task for professionals, students, and businesses alike. Whether you're combining monthly reports, gathering receipts for taxes, or organizing research papers into a single document, our Merge PDF tool makes the process effortless and fast.
 
-Key Features:
-- Drag and drop interface: Easily upload multiple files at once.
-- Reorder files: Arrange your PDFs in the exact order you want them merged.
-- Fast processing: Merge large files in seconds.
-- Privacy first: Your files are processed locally. We don't store your documents.
+### Why Use Our Online PDF Merger?
+Our tool is designed to be the most user-friendly and secure PDF binder available online. Unlike other services, we prioritize your privacy and speed.
 
-How to merge PDFs:
-1. Upload your PDF files using the "Add Files" button.
-2. Use the up and down arrows to arrange the files in your preferred order.
-3. Click "Merge PDF" to combine them into a single document.
-4. Download your new merged PDF file.`}
+- **Drag and Drop Interface**: Easily upload multiple files at once from your computer or mobile device.
+- **Complete Control**: Arrange your PDFs in the exact order you want them merged using our intuitive up/down arrows.
+- **No Software Needed**: Everything happens in your web browser. No need to download bulky software like Adobe Acrobat.
+- **Privacy First**: Your files are processed locally using JavaScript. This means your sensitive documents never leave your computer and are never stored on our servers.
+- **100% Free**: No hidden costs, no watermarks, and no registration required.
+
+### How to Merge PDFs in 3 Simple Steps:
+1. **Add Your Files**: Click the "Add Files" button to select the PDF documents you want to combine.
+2. **Organize**: Use the arrows to reorder the files. The top file will be the first page of your new document.
+3. **Merge & Download**: Click the "Merge PDF" button. Once processed, your new combined PDF will be ready for instant download.`}
       faqs={[
-        { question: "Is there a limit to how many PDFs I can merge?", answer: "Our tool can handle dozens of files at once, though very large total file sizes may depend on your browser's memory." },
-        { question: "Will the quality of my PDFs be affected?", answer: "No, merging PDFs simply combines the pages into a new document without re-compressing or altering the original content quality." },
-        { question: "Are my files safe?", answer: "Yes, all processing is done client-side in your browser. Your files are never uploaded to our servers." }
+        { question: "Is there a limit to how many PDFs I can merge?", answer: "Our tool can handle dozens of files at once. While there is no hard limit on the number of files, merging extremely large documents (hundreds of MBs) may depend on your browser's available memory." },
+        { question: "Will the quality of my PDFs be affected after merging?", answer: "No, merging PDFs simply combines the pages into a new document. It does not re-compress or alter the original content, so your images and text will remain as sharp as the original." },
+        { question: "Are my sensitive documents safe with Tooolify?", answer: "Absolutely. We use client-side technology to process your files. This means the merging happens on your device, not our server. Your data never touches our backend, ensuring 100% privacy." },
+        { question: "Can I merge PDFs on my mobile phone?", answer: "Yes! Tooolify is fully responsive and works perfectly on iPhones, Android devices, and tablets. You can merge files directly from your mobile storage or cloud drives." }
       ]}
     >
       <div className="space-y-8">

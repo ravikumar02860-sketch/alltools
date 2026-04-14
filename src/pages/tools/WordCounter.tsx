@@ -18,22 +18,30 @@ export const WordCounter: React.FC = () => {
     <ToolPage
       toolId="word-counter"
       category="text"
-      title="Word Counter"
-      description="Count words, characters, sentences, and paragraphs in real-time. Calculate reading time and analyze text density for SEO."
-      longDescription={`Our Word Counter is a powerful tool designed for writers, students, and SEO professionals. Whether you're writing a blog post, an essay, or meta descriptions, knowing your exact word and character count is essential.
+      title="Word Counter Online - Free Character & Sentence Count Tool"
+      description="Count words, characters, sentences, and paragraphs in real-time. Our free online word counter also calculates reading time and helps you optimize text for SEO, social media, and academic writing."
+      keywords={['word counter online', 'character count tool', 'sentence counter', 'paragraph counter', 'text analysis tool', 'free word count', 'writing statistics', 'seo word counter']}
+      longDescription={`Our Word Counter is a professional-grade text analysis tool designed for writers, students, bloggers, and SEO specialists. In a world where character limits and word counts define our digital communication, having a reliable and instant counting tool is essential.
 
-Key Features:
-- Real-time counting: See results as you type.
-- Detailed metrics: Get counts for sentences, paragraphs, and characters (with and without spaces).
-- Reading time estimation: Know how long it will take an average reader to consume your content.
-- Privacy focused: All processing happens in your browser. Your text is never sent to our servers.
+### Why Use Our Online Word Counter?
+Whether you're drafting a 280-character tweet, a 60-character meta title, or a 2,000-word academic essay, our tool provides the precision you need.
 
-Why use a word counter?
-Many platforms have strict limits. Twitter has a character limit, Google has limits for meta titles and descriptions, and academic papers often have strict word counts. Our tool helps you stay within these boundaries while maintaining high-quality content.`}
+- **Real-Time Analysis**: No need to click "submit." See your word and character counts update instantly as you type or paste your text.
+- **Comprehensive Metrics**: Beyond just words, we provide detailed statistics for sentences, paragraphs, and characters (both with and without spaces).
+- **Reading Time Estimation**: Perfect for content creators who want to inform their audience about the length of a blog post or article.
+- **Privacy & Security**: Your content is yours. We process all text locally in your browser using JavaScript. Your text is never uploaded to our servers, ensuring your drafts remain private.
+- **SEO Optimization**: Use our tool to ensure your meta descriptions and titles stay within Google's recommended limits to avoid truncation in search results.
+
+### Who is this tool for?
+- **Bloggers & SEOs**: Optimize content length for better search engine rankings.
+- **Students**: Ensure your essays and assignments meet the required word count.
+- **Social Media Managers**: Stay within character limits for Twitter, Instagram, and LinkedIn.
+- **Writers & Editors**: Track your daily writing progress and maintain consistency.`}
       faqs={[
-        { question: "Is there a limit to how much text I can paste?", answer: "No, our tool can handle very large amounts of text as it processes everything locally in your browser." },
-        { question: "Does it count spaces as characters?", answer: "We provide both counts: total characters (including spaces) and characters excluding spaces." },
-        { question: "How is reading time calculated?", answer: "It's based on an average reading speed of 200 words per minute, which is standard for adult readers." }
+        { question: "Is this word counter free to use?", answer: "Yes, Tooolify's Word Counter is 100% free. There are no hidden fees, no registration required, and no limits on how many times you can use it." },
+        { question: "Does it count spaces as characters?", answer: "We provide two separate metrics: 'Total Characters' (which includes spaces) and 'Characters No Spaces'. This helps you meet specific requirements for different platforms." },
+        { question: "How is the reading time calculated?", answer: "Our algorithm uses an average adult reading speed of 200 words per minute (WPM). This is the industry standard for estimating how long it takes to read a piece of content." },
+        { question: "Can I use this tool on my mobile device?", answer: "Absolutely. Our website is fully responsive, meaning you can count words on your iPhone, Android, or tablet just as easily as on a desktop." }
       ]}
     >
       <div className="space-y-6">

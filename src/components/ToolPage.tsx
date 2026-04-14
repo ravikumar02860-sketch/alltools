@@ -18,6 +18,7 @@ interface ToolPageProps {
   children: React.ReactNode;
   category: string;
   toolId: string;
+  keywords?: string[];
 }
 
 export const ToolPage: React.FC<ToolPageProps> = ({
@@ -27,13 +28,14 @@ export const ToolPage: React.FC<ToolPageProps> = ({
   faqs,
   children,
   category,
-  toolId
+  toolId,
+  keywords
 }) => {
   React.useEffect(() => {
     trackToolUsage(toolId);
   }, [toolId]);
 
-  const schema = {
+  const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": title,
@@ -44,20 +46,43 @@ export const ToolPage: React.FC<ToolPageProps> = ({
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    },
-    "mainEntity": {
+    }
+  };
+
+  const faqSchema = faqs && faqs.length > 0 ? {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
       "@type": "Question",
-      "name": "How to use " + title + "?",
+      "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": description
+        "text": faq.answer
       }
+    }))
+  } : null;
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: `${title} | Tooolify`,
+        text: description,
+        url: window.location.href,
+      }).catch(console.error);
+    } else {
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
     }
   };
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
-      <SEO title={title} description={description} schema={schema} />
+      <SEO 
+        title={title} 
+        description={description} 
+        keywords={keywords}
+        schema={faqSchema ? [softwareSchema, faqSchema] : softwareSchema} 
+      />
 
       {/* Breadcrumbs & Actions */}
       <div className="flex items-center justify-between">
@@ -69,10 +94,11 @@ export const ToolPage: React.FC<ToolPageProps> = ({
           Back to {category.charAt(0).toUpperCase() + category.slice(1)} Tools
         </Link>
         <div className="flex items-center gap-2">
-          <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all">
-            <Star size={18} />
-          </button>
-          <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all">
+          <button 
+            onClick={handleShare}
+            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
+            title="Share this tool"
+          >
             <Share2 size={18} />
           </button>
         </div>

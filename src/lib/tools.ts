@@ -219,7 +219,7 @@ export const tools: Tool[] = [
     category: 'text',
     icon: Type,
     path: '/text/case-converter',
-    keywords: ['text', 'case', 'uppercase', 'lowercase', 'title case'],
+    keywords: ['text case converter', 'uppercase to lowercase', 'title case generator', 'sentence case converter', 'online text formatter', 'convert text case', 'capitalize text'],
   },
   {
     id: 'word-counter',
@@ -228,7 +228,7 @@ export const tools: Tool[] = [
     category: 'text',
     icon: FileText,
     path: '/text/word-counter',
-    keywords: ['word count', 'character count', 'text analysis'],
+    keywords: ['word counter online', 'character count tool', 'sentence counter', 'paragraph counter', 'text analysis tool', 'free word count', 'writing statistics'],
   },
   // Developer Tools
   {
@@ -238,7 +238,7 @@ export const tools: Tool[] = [
     category: 'dev',
     icon: Code,
     path: '/dev/json-formatter',
-    keywords: ['json', 'format', 'prettify', 'minify', 'validate'],
+    keywords: ['json formatter online', 'json prettifier', 'json minifier', 'validate json', 'json viewer', 'beautify json', 'json editor'],
   },
   {
     id: 'base64-encoder',
@@ -247,7 +247,7 @@ export const tools: Tool[] = [
     category: 'dev',
     icon: Binary,
     path: '/dev/base64',
-    keywords: ['base64', 'encode', 'decode', 'binary'],
+    keywords: ['base64 encoder', 'base64 decoder', 'online base64 tool', 'encode string to base64', 'decode base64 to text', 'base64 converter'],
   },
   // Generators
   {
@@ -257,7 +257,7 @@ export const tools: Tool[] = [
     category: 'generator',
     icon: Shield,
     path: '/generator/password',
-    keywords: ['password', 'secure', 'random', 'generator'],
+    keywords: ['secure password generator', 'random password creator', 'strong password tool', 'online password maker', 'generate safe password', 'custom password generator'],
   },
   {
     id: 'uuid-generator',
@@ -266,7 +266,7 @@ export const tools: Tool[] = [
     category: 'generator',
     icon: Zap,
     path: '/generator/uuid',
-    keywords: ['uuid', 'guid', 'unique id', 'generator'],
+    keywords: ['uuid generator', 'guid generator', 'generate v4 uuid', 'online uuid creator', 'unique identifier generator', 'bulk uuid generator'],
   },
   {
     id: 'qr-code-generator',
@@ -275,7 +275,7 @@ export const tools: Tool[] = [
     category: 'generator',
     icon: QrCode,
     path: '/generator/qr-code',
-    keywords: ['qr code', 'generator', 'custom', 'url'],
+    keywords: ['qr code generator', 'create qr code online', 'custom qr code maker', 'qr code for url', 'free qr code generator', 'high resolution qr code'],
   },
   // Security
   {
@@ -285,7 +285,7 @@ export const tools: Tool[] = [
     category: 'security',
     icon: Hash,
     path: '/security/hash',
-    keywords: ['hash', 'md5', 'sha256', 'cryptography'],
+    keywords: ['hash generator online', 'md5 hash creator', 'sha256 generator', 'sha1 hash tool', 'online checksum generator', 'cryptographic hash maker'],
   },
   // SEO
   {
@@ -295,7 +295,7 @@ export const tools: Tool[] = [
     category: 'seo',
     icon: Search,
     path: '/seo/meta-tags',
-    keywords: ['seo', 'meta tags', 'header', 'optimization'],
+    keywords: ['meta tag generator', 'seo meta tags tool', 'website meta tags creator', 'og tag generator', 'twitter card maker', 'seo optimization tool'],
   },
   {
     id: 'lorem-ipsum',
@@ -304,7 +304,7 @@ export const tools: Tool[] = [
     category: 'text',
     icon: Type,
     path: '/text/lorem-ipsum',
-    keywords: ['lorem ipsum', 'placeholder', 'dummy text', 'generator'],
+    keywords: ['lorem ipsum generator', 'placeholder text creator', 'dummy text generator', 'filler text maker', 'online lorem ipsum tool'],
   },
   // Converters
   {
@@ -314,7 +314,7 @@ export const tools: Tool[] = [
     category: 'converter',
     icon: RefreshCw,
     path: '/converter/unit',
-    keywords: ['unit', 'convert', 'length', 'weight', 'temperature'],
+    keywords: ['unit converter online', 'length converter', 'weight converter', 'temperature converter', 'metric to imperial converter', 'measurement converter'],
   },
   // Math
   {
@@ -324,7 +324,7 @@ export const tools: Tool[] = [
     category: 'math',
     icon: Calculator,
     path: '/math/percentage',
-    keywords: ['percentage', 'calculator', 'math', 'increase', 'decrease'],
+    keywords: ['percentage calculator', 'calculate percentage increase', 'percentage decrease tool', 'online math calculator', 'percent off calculator'],
   },
   // PDF Tools
   {
@@ -334,7 +334,7 @@ export const tools: Tool[] = [
     category: 'pdf',
     icon: FileText,
     path: '/pdf/merge',
-    keywords: ['pdf', 'merge', 'combine', 'join'],
+    keywords: ['merge pdf online', 'combine pdf files', 'join pdf documents', 'free pdf merger', 'online pdf joiner', 'merge multiple pdfs'],
   },
   {
     id: 'split-pdf',
@@ -343,7 +343,7 @@ export const tools: Tool[] = [
     category: 'pdf',
     icon: FileText,
     path: '/pdf/split',
-    keywords: ['pdf', 'split', 'extract', 'pages'],
+    keywords: ['split pdf online', 'extract pdf pages', 'separate pdf pages', 'pdf splitter tool', 'free pdf extractor'],
   },
   {
     id: 'pdf-to-word',
@@ -352,7 +352,7 @@ export const tools: Tool[] = [
     category: 'pdf',
     icon: FileText,
     path: '/pdf/to-word',
-    keywords: ['pdf', 'word', 'convert', 'doc', 'docx'],
+    keywords: ['pdf to word converter', 'convert pdf to docx', 'pdf to editable word', 'online pdf to word tool', 'free pdf to word'],
   },
   {
     id: 'compress-pdf',
@@ -361,6 +361,6 @@ export const tools: Tool[] = [
     category: 'pdf',
     icon: FileText,
     path: '/pdf/compress',
-    keywords: ['pdf', 'compress', 'reduce size', 'optimize'],
+    keywords: ['compress pdf online', 'reduce pdf file size', 'optimize pdf for web', 'free pdf compressor', 'shrink pdf document'],
   },
 ];
