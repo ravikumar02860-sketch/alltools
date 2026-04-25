@@ -22,15 +22,45 @@ export const CategoryPage: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title={`${category.name} - Free Online Utilities`} 
-        description={category.description}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "CollectionPage",
-          "name": category.name,
-          "description": category.description,
-          "url": window.location.href
-        }}
+        title={`${category.name} - Free Online Utilities & Tools`} 
+        description={`Access our collection of free ${category.name.toLowerCase()}. ${category.description} Fast, secure, and no signup required.`}
+        keywords={[category.name.toLowerCase(), `${category.name.toLowerCase()} tools`, 'free online tools', 'web utilities']}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": category.name,
+            "description": category.description,
+            "url": window.location.href,
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": categoryTools.map((tool, index) => ({
+                "@type": "ListItem",
+                "position": index + 1,
+                "url": `https://tooolify.vercel.app${tool.path}`,
+                "name": tool.name
+              }))
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://tooolify.vercel.app"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": category.name,
+                "item": window.location.href
+              }
+            ]
+          }
+        ]}
       />
 
       <div className="space-y-4">
@@ -102,6 +132,22 @@ export const CategoryPage: React.FC = () => {
           All tools in this category are privacy-focused, meaning your data is processed locally whenever possible. 
           We don't store your inputs, and we don't require any signup to access the full functionality of our tools.
         </p>
+
+        <div className="mt-12 pt-8 border-t border-slate-100">
+          <h3 className="text-xl font-bold text-slate-900 mb-6">Explore Other Categories</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {categories.filter(c => c.id !== categoryId).slice(0, 4).map(c => (
+              <Link 
+                key={c.id} 
+                to={`/category/${c.id}`}
+                className="p-4 bg-slate-50 rounded-2xl hover:bg-indigo-50 transition-colors text-center"
+              >
+                <div className="text-indigo-600 mb-2 flex justify-center"><c.icon size={20} /></div>
+                <div className="text-xs font-bold text-slate-900">{c.name}</div>
+              </Link>
+            ))}
+          </div>
+        </div>
       </section>
     </div>
   );

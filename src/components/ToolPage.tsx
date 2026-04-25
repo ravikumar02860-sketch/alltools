@@ -1,9 +1,10 @@
 import React from 'react';
 import { SEO } from './SEO';
 import { motion } from 'motion/react';
-import { ArrowLeft, Share2, Star, Info } from 'lucide-react';
+import { ArrowLeft, Share2, Star, Info, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { trackToolUsage } from '@/src/lib/analytics';
+import { tools } from '@/src/lib/tools';
 
 interface FAQ {
   question: string;
@@ -35,18 +36,52 @@ export const ToolPage: React.FC<ToolPageProps> = ({
     trackToolUsage(toolId);
   }, [toolId]);
 
+  const relatedTools = tools
+    .filter(t => t.category === category && t.id !== toolId)
+    .slice(0, 5);
+
   const softwareSchema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
     "name": title,
     "description": description,
+    "url": window.location.href,
     "applicationCategory": "UtilityApplication",
     "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
+    },
+    "author": {
+      "@type": "Organization",
+      "name": "Tooolify"
     }
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://tooolify.vercel.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": category.charAt(0).toUpperCase() + category.slice(1),
+        "item": `https://tooolify.vercel.app/category/${category}`
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": title,
+        "item": window.location.href
+      }
+    ]
   };
 
   const faqSchema = faqs && faqs.length > 0 ? {
@@ -71,9 +106,11 @@ export const ToolPage: React.FC<ToolPageProps> = ({
       }).catch(console.error);
     } else {
       navigator.clipboard.writeText(window.location.href);
-      alert('Link copied to clipboard!');
     }
   };
+
+  const schemas: any[] = [softwareSchema, breadcrumbSchema];
+  if (faqSchema) schemas.push(faqSchema);
 
   return (
     <div className="space-y-8 max-w-4xl mx-auto">
@@ -81,25 +118,27 @@ export const ToolPage: React.FC<ToolPageProps> = ({
         title={title} 
         description={description} 
         keywords={keywords}
-        schema={faqSchema ? [softwareSchema, faqSchema] : softwareSchema} 
+        schema={schemas} 
       />
 
       {/* Breadcrumbs & Actions */}
-      <div className="flex items-center justify-between">
-        <Link 
-          to={`/category/${category}`} 
-          className="flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-indigo-600 transition-colors"
-        >
-          <ArrowLeft size={16} />
-          Back to {category.charAt(0).toUpperCase() + category.slice(1)} Tools
-        </Link>
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <nav className="flex items-center gap-2 text-xs font-medium text-slate-400">
+          <Link to="/" className="hover:text-indigo-600">Home</Link>
+          <ChevronRight size={12} />
+          <Link to={`/category/${category}`} className="hover:text-indigo-600">
+            {category.charAt(0).toUpperCase() + category.slice(1)}
+          </Link>
+          <ChevronRight size={12} />
+          <span className="text-slate-600 truncate max-w-[150px]">{title}</span>
+        </nav>
         <div className="flex items-center gap-2">
           <button 
             onClick={handleShare}
-            className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all"
-            title="Share this tool"
+            className="flex items-center gap-2 px-4 py-2 text-slate-500 hover:text-indigo-600 hover:bg-indigo-50 rounded-xl transition-all text-sm font-bold"
           >
-            <Share2 size={18} />
+            <Share2 size={16} />
+            Share
           </button>
         </div>
       </div>
@@ -170,10 +209,15 @@ export const ToolPage: React.FC<ToolPageProps> = ({
           <div className="p-6 bg-white rounded-3xl border border-slate-100 shadow-sm">
             <h4 className="font-bold text-slate-900 mb-4">Related Tools</h4>
             <div className="space-y-3">
-              {/* This would be dynamically populated in a real app */}
-              <Link to="/text/word-counter" className="block text-sm text-slate-600 hover:text-indigo-600">Word Counter</Link>
-              <Link to="/dev/json-formatter" className="block text-sm text-slate-600 hover:text-indigo-600">JSON Formatter</Link>
-              <Link to="/generator/password" className="block text-sm text-slate-600 hover:text-indigo-600">Password Generator</Link>
+              {relatedTools.map(tool => (
+                <Link 
+                  key={tool.id} 
+                  to={tool.path} 
+                  className="block text-sm text-slate-600 hover:text-indigo-600 transition-colors"
+                >
+                  {tool.name}
+                </Link>
+              ))}
             </div>
           </div>
         </aside>

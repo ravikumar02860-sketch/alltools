@@ -7,6 +7,7 @@ import {
   Calculator, 
   Search,
   FileText,
+  FileCode,
   Binary,
   Hash,
   Link as LinkIcon,
@@ -77,7 +78,7 @@ export const categories: Category[] = [
   {
     id: 'seo',
     name: 'SEO Tools',
-    description: 'Optimize your website for search engines with these tools.',
+    description: 'Optimize your website for search engines with these professional utilities.',
     icon: Search,
   },
   {
@@ -219,16 +220,16 @@ export const tools: Tool[] = [
     category: 'text',
     icon: Type,
     path: '/text/case-converter',
-    keywords: ['text case converter', 'uppercase to lowercase', 'title case generator', 'sentence case converter', 'online text formatter', 'convert text case', 'capitalize text'],
+    keywords: ['text case converter online', 'uppercase to lowercase conversion', 'title case generator pro', 'sentence case converter free', 'online text formatter tool', 'convert text case safely', 'capitalize text online', 'camel case converter', 'snake case to camel case'],
   },
   {
     id: 'word-counter',
     name: 'Word Counter',
-    description: 'Count words, characters, sentences, and paragraphs.',
+    description: 'Count words, characters, sentences, and paragraphs for SEO, essays, and social media posts.',
     category: 'text',
     icon: FileText,
     path: '/text/word-counter',
-    keywords: ['word counter online', 'character count tool', 'sentence counter', 'paragraph counter', 'text analysis tool', 'free word count', 'writing statistics'],
+    keywords: ['word counter online free', 'character count tool with spaces', 'sentence counter for essays', 'paragraph counter for writers', 'text analysis tool for bloggers', 'free word count utility', 'writing statistics analyzer'],
   },
   // Developer Tools
   {
@@ -295,7 +296,34 @@ export const tools: Tool[] = [
     category: 'seo',
     icon: Search,
     path: '/seo/meta-tags',
-    keywords: ['meta tag generator', 'seo meta tags tool', 'website meta tags creator', 'og tag generator', 'twitter card maker', 'seo optimization tool'],
+    keywords: ['meta tag generator', 'seo meta tags tool', 'website meta tags creator', 'og tag generator', 'twitter card maker', 'seo optimization tool', 'json-ld schema generator'],
+  },
+  {
+    id: 'keyword-density-checker',
+    name: 'Keyword Density Checker',
+    description: 'Analyze your content to find the most frequent keywords and their density.',
+    category: 'seo',
+    icon: Search,
+    path: '/seo/keyword-density',
+    keywords: ['keyword density checker', 'seo keyword analyzer', 'text analysis tool', 'keyword frequency tool', 'seo content optimizer'],
+  },
+  {
+    id: 'robots-txt-generator',
+    name: 'Robots.txt Generator',
+    description: 'Create a custom robots.txt file to control how search engines crawl your site.',
+    category: 'seo',
+    icon: Shield,
+    path: '/seo/robots-txt',
+    keywords: ['robots.txt generator', 'create robots.txt online', 'seo robots tool', 'crawler control'],
+  },
+  {
+    id: 'sitemap-generator',
+    name: 'XML Sitemap Generator',
+    description: 'Generate a professional XML sitemap to help search engines index your pages.',
+    category: 'seo',
+    icon: FileCode,
+    path: '/seo/sitemap',
+    keywords: ['xml sitemap generator', 'create sitemap online', 'seo sitemap tool', 'website indexing'],
   },
   {
     id: 'lorem-ipsum',
@@ -317,6 +345,15 @@ export const tools: Tool[] = [
     keywords: ['unit converter online', 'length converter', 'weight converter', 'temperature converter', 'metric to imperial converter', 'measurement converter'],
   },
   // Math
+  {
+    id: 'emi-calculator',
+    name: 'EMI Calculator',
+    description: 'Calculate monthly loan installments for Home, Car, and Personal loans instantly.',
+    category: 'math',
+    icon: Calculator,
+    path: '/math/emi-calculator',
+    keywords: ['emi calculator india', 'home loan calculator', 'car loan emi online', 'personal loan calculator', 'monthly installment calculator', 'sbi emi calculator', 'hdfc emi calculator'],
+  },
   {
     id: 'percentage-calculator',
     name: 'Percentage Calculator',

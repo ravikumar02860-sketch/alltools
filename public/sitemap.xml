@@ -20,9 +20,27 @@
   </url>
   <url>
     <loc>https://tooolify.vercel.app/blog</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/blog/top-10-developer-tools-2026</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/blog/seo-best-practices-for-tools-sites</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/sitemap</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <!-- PDF Tools -->
@@ -116,7 +134,25 @@
   <!-- SEO Tools -->
   <url>
     <loc>https://tooolify.vercel.app/seo/meta-tags</loc>
-    <lastmod>2026-04-10</lastmod>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/seo/keyword-density</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/seo/robots-txt</loc>
+    <lastmod>2026-04-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://tooolify.vercel.app/seo/sitemap</loc>
+    <lastmod>2026-04-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>

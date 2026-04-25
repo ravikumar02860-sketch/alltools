@@ -209,6 +209,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                 <li><Link to="/about" className="hover:text-indigo-600">About Us</Link></li>
                 <li><Link to="/blog" className="hover:text-indigo-600">Blog</Link></li>
                 <li><Link to="/contact" className="hover:text-indigo-600">Contact</Link></li>
+                <li><Link to="/sitemap" className="hover:text-indigo-600">Sitemap</Link></li>
               </ul>
             </div>
             <div>

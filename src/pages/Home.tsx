@@ -18,17 +18,55 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-12">
       <SEO 
-        title="100+ Free Online Tools for Developers & Creators" 
-        description="Access the ultimate collection of free online utilities. From text manipulation to developer tools, Tooolify has everything you need in one place."
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebApplication",
-          "name": "Tooolify",
-          "url": "https://tooolify.vercel.app",
-          "description": "A comprehensive platform offering over 100 free online tools.",
-          "applicationCategory": "UtilityApplication",
-          "operatingSystem": "All"
-        }}
+        title="100+ Free Online Tools for Developers, Designers & Creators" 
+        description="Access the ultimate collection of 100+ free online utilities. Fast, secure, and privacy-focused tools for text, PDF, SEO, development, and more. No signup required."
+        keywords={['free online tools', 'developer utilities', 'seo tools online', 'pdf tools free', 'text manipulation tools', 'web utilities', 'privacy focused tools', 'online converters']}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Tooolify",
+            "url": "https://tooolify.vercel.app",
+            "description": "A comprehensive platform offering over 100 free online tools for digital professionals.",
+            "applicationCategory": "UtilityApplication",
+            "operatingSystem": "All",
+            "offers": {
+              "@type": "Offer",
+              "price": "0",
+              "priceCurrency": "USD"
+            }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "Are these tools really free?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, all our basic tools are 100% free to use without any signup or subscription."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is my data secure on Tooolify?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Absolutely. We use industry-standard encryption and process most data locally in your browser, meaning your data never even leaves your device."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Can I use these tools for commercial projects?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Yes, you are free to use the outputs of our tools for any personal or commercial project without attribution."
+                }
+              }
+            ]
+          }
+        ]}
       />
 
       {/* Hero Section */}
@@ -188,39 +226,66 @@ export const Home: React.FC = () => {
       </section>
 
       {/* SEO Content Section */}
-      <section className="prose prose-slate max-w-none bg-white p-8 md:p-12 rounded-3xl border border-slate-100">
-        <h2 className="text-3xl font-bold text-slate-900 mb-6">Why Choose Tooolify?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Fast & Efficient</h3>
-            <p className="text-slate-600 leading-relaxed">
-              Our tools are built with performance in mind. Most processing happens directly in your browser, 
-              ensuring instant results without the need for server round-trips. This means your data stays 
-              private and the experience is lightning fast.
+      <section className="prose prose-slate max-w-none bg-white p-8 md:p-12 rounded-[48px] border border-slate-100 shadow-sm">
+        <h2 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">The Ultimate Online Toolbelt for Digital Professionals</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
+              <Star size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">100+ Free Utilities</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              From **PDF merging** to **JSON formatting**, we've curated the most essential tools for your daily workflow. Every tool is tested for accuracy and speed.
             </p>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-slate-900 mb-3">Privacy First</h3>
-            <p className="text-slate-600 leading-relaxed">
-              We value your privacy. Unlike other platforms, we don't store your input data. 
-              Everything is processed locally whenever possible, and any files uploaded for 
-              processing are automatically deleted after 1 hour.
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
+              <ShieldAlert size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">Privacy-First Design</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Your data is yours. We use **client-side processing** (JavaScript) for most tools, meaning your sensitive information never even hits our servers.
+            </p>
+          </div>
+          <div className="space-y-4">
+            <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600">
+              <TrendingUp size={24} />
+            </div>
+            <h3 className="text-xl font-bold text-slate-900">SEO Optimized</h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Our tools like the **Meta Tag Generator** and **Keyword Density Checker** are built to help you rank higher on Google and improve your online presence.
             </p>
           </div>
         </div>
+
+        <div className="space-y-8">
+          <h3 className="text-2xl font-bold text-slate-900">Comprehensive Tool Categories</h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {categories.map(cat => (
+              <Link key={cat.id} to={`/category/${cat.id}`} className="p-4 bg-slate-50 rounded-2xl hover:bg-indigo-50 transition-colors border border-transparent hover:border-indigo-100">
+                <div className="font-bold text-slate-900 text-sm mb-1">{cat.name}</div>
+                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Explore {cat.id} tools</div>
+              </Link>
+            ))}
+          </div>
+        </div>
         
-        <div className="mt-12">
-          <h3 className="text-2xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h3>
-          <div className="space-y-4">
+        <div className="mt-16 pt-12 border-t border-slate-100">
+          <h3 className="text-2xl font-bold text-slate-900 mb-8">Frequently Asked Questions</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
-              { q: "Are these tools really free?", a: "Yes, all our basic tools are 100% free to use without any signup or subscription." },
-              { q: "Is my data secure?", a: "Absolutely. We use industry-standard encryption and process most data locally in your browser." },
-              { q: "Can I use these tools for commercial projects?", a: "Yes, you are free to use the outputs of our tools for any personal or commercial project." },
-              { q: "Do you have an API?", a: "We are currently developing a premium API for developers. Stay tuned for updates!" }
+              { q: "Are these tools really free?", a: "Yes, all our basic tools are 100% free to use without any signup or subscription. We believe in providing value to the community." },
+              { q: "Is my data secure on Tooolify?", a: "Absolutely. We use industry-standard encryption and process most data locally in your browser. For tools that require server processing, files are automatically deleted after 1 hour." },
+              { q: "Can I use these tools for commercial projects?", a: "Yes, you are free to use the outputs of our tools for any personal or commercial project without any attribution required." },
+              { q: "Do you have an API for developers?", a: "We are currently developing a premium API for developers who need bulk processing. Stay tuned for our official launch!" }
             ].map((faq, i) => (
-              <div key={i} className="p-4 bg-slate-50 rounded-2xl">
-                <h4 className="font-bold text-slate-900 mb-2">{faq.q}</h4>
-                <p className="text-sm text-slate-600">{faq.a}</p>
+              <div key={i} className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
+                <h4 className="font-bold text-slate-900 mb-3 flex items-start gap-3">
+                  <span className="text-indigo-600">Q:</span>
+                  {faq.q}
+                </h4>
+                <p className="text-sm text-slate-600 leading-relaxed pl-7">{faq.a}</p>
               </div>
             ))}
           </div>
