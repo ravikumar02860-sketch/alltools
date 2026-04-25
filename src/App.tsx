@@ -19,6 +19,7 @@ import { MetaTagGenerator } from './pages/tools/MetaTagGenerator';
 import { KeywordDensityChecker } from './pages/tools/KeywordDensityChecker';
 import { RobotsTxtGenerator } from './pages/tools/RobotsTxtGenerator';
 import { SitemapGenerator } from './pages/tools/SitemapGenerator';
+import { ImageOptimizer } from './pages/tools/ImageOptimizer';
 import { WordCounter } from './pages/tools/WordCounter';
 import { Base64 } from './pages/tools/Base64';
 import { MergePdf } from './pages/tools/MergePdf';
@@ -36,6 +37,7 @@ import { About } from './pages/About';
 import { Contact } from './pages/Contact';
 import { Sitemap } from './pages/Sitemap';
 import { NotFound } from './pages/NotFound';
+import { GenericAITool } from './pages/tools/GenericAITool';
 
 export default function App() {
   return (
@@ -50,6 +52,11 @@ export default function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            
+            {/* AI Tools (Dynamic) */}
+            <Route path="/ai/:toolId" element={<GenericAITool />} />
+            
+            <Route path="/image/optimizer" element={<ImageOptimizer />} />
             <Route path="/text/case-converter" element={<CaseConverter />} />
             <Route path="/dev/json-formatter" element={<JsonFormatter />} />
             <Route path="/generator/password" element={<PasswordGenerator />} />

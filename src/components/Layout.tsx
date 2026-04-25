@@ -106,13 +106,16 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               href="https://github.com" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 text-slate-600 hover:text-slate-900 transition-colors"
+              className="p-2 text-slate-600 hover:text-slate-900 transition-colors hidden sm:block"
             >
               <Github size={20} />
             </a>
-            <button className="hidden sm:block px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-xl hover:bg-indigo-700 transition-colors shadow-sm">
-              Premium
-            </button>
+            <Link 
+              to="/contact"
+              className="hidden sm:flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-slate-200"
+            >
+              Submit Tool
+            </Link>
           </div>
         </div>
       </header>

@@ -2,7 +2,21 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { categories, tools } from '@/src/lib/tools';
 import { SEO } from '@/src/components/SEO';
-import { ArrowRight, Star, TrendingUp, Clock, ShieldAlert } from 'lucide-react';
+import { 
+  ArrowRight, 
+  Star, 
+  TrendingUp, 
+  Clock, 
+  ShieldAlert, 
+  Search, 
+  Zap, 
+  Shield, 
+  ArrowUpRight, 
+  Sparkles, 
+  CheckCircle, 
+  Play, 
+  Heart 
+} from 'lucide-react';
 import { motion } from 'motion/react';
 import { getRecentlyUsedTools } from '@/src/lib/analytics';
 import { nsfwTools } from '@/src/lib/tools';
@@ -10,210 +24,164 @@ import { NsfwCard } from '@/src/components/NsfwCard';
 
 export const Home: React.FC = () => {
   const popularTools = tools.slice(0, 4);
-  const recentTools = tools.slice(4, 8);
-  const recentlyUsedIds = getRecentlyUsedTools();
-  const recentlyUsed = tools.filter(t => recentlyUsedIds.includes(t.id));
+  const recentTools = tools.slice(4, 9);
   const trendingNsfw = nsfwTools.slice(0, 8);
 
+  const trendingTags = [
+    { label: 'PDF Editor', path: '/pdf/merge' },
+    { label: 'AI Story', path: '/ai-erotic-story-generator' },
+    { label: 'QR Generator', path: '/generator/qr-code' },
+    { label: 'Word Counter', path: '/text/word-counter' },
+    { label: 'SEO Audit', path: '/seo/meta-tags' }
+  ];
+
   return (
-    <div className="space-y-12">
+    <div className="space-y-20 pb-20">
       <SEO 
-        title="100+ Free Online Tools for Developers, Designers & Creators" 
-        description="Access the ultimate collection of 100+ free online utilities. Fast, secure, and privacy-focused tools for text, PDF, SEO, development, and more. No signup required."
-        keywords={['free online tools', 'developer utilities', 'seo tools online', 'pdf tools free', 'text manipulation tools', 'web utilities', 'privacy focused tools', 'online converters']}
+        title="Tooolify | The Ultimate AI Tool Website & Digital Directory" 
+        description="Discover the best AI tool website featuring 100+ free online utilities. Fast, secure AI generators, converters, and developer tools. No signup required."
+        keywords={['ai tool website', 'best ai directory', 'free online ai tools', 'ai content generators', 'developer utilities online', 'seo ai tools']}
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "WebApplication",
-            "name": "Tooolify",
+            "name": "Tooolify AI Directory",
             "url": "https://tooolify.vercel.app",
-            "description": "A comprehensive platform offering over 100 free online tools for digital professionals.",
-            "applicationCategory": "UtilityApplication",
+            "description": "Premium AI tool website and directory for digital professionals.",
+            "applicationCategory": "AIApplication",
             "operatingSystem": "All",
             "offers": {
               "@type": "Offer",
               "price": "0",
               "priceCurrency": "USD"
             }
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": [
-              {
-                "@type": "Question",
-                "name": "Are these tools really free?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, all our basic tools are 100% free to use without any signup or subscription."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Is my data secure on Tooolify?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Absolutely. We use industry-standard encryption and process most data locally in your browser, meaning your data never even leaves your device."
-                }
-              },
-              {
-                "@type": "Question",
-                "name": "Can I use these tools for commercial projects?",
-                "acceptedAnswer": {
-                  "@type": "Answer",
-                  "text": "Yes, you are free to use the outputs of our tools for any personal or commercial project without attribution."
-                }
-              }
-            ]
           }
         ]}
       />
 
-      {/* Hero Section */}
-      <section className="text-center space-y-6 py-8">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs font-bold uppercase tracking-wider"
-        >
-          <Star size={14} fill="currentColor" />
-          <span>New Tools Added Weekly</span>
-        </motion.div>
-        <h1 className="text-4xl md:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
-          Every Tool You Need, <br />
-          <span className="text-indigo-600">All in One Place.</span>
-        </h1>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-          Free, fast, and secure online tools for developers, designers, and digital professionals. 
-          No signup required. No watermarks. Just pure utility.
-        </p>
-        <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
-          <Link to="/category/text" className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">
-            Explore All Tools
-          </Link>
-          <Link to="/nsfw-ai-tools" className="px-8 py-3 bg-slate-900 text-white font-bold rounded-2xl border hover:bg-slate-800 transition-all flex items-center gap-2">
-            NSFW AI Directory <ShieldAlert size={18} className="text-indigo-400" />
-          </Link>
-        </div>
-      </section>
+      {/* Hero Section - AI Directory Style */}
+      <section className="relative py-20 px-4 overflow-hidden -mt-8">
+        {/* Background Gradients */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] bg-gradient-to-b from-indigo-50/50 to-transparent -z-10" />
+        <div className="absolute -top-24 left-1/4 w-96 h-96 bg-indigo-500/10 blur-[120px] rounded-full -z-10" />
+        <div className="absolute top-48 right-1/4 w-64 h-64 bg-emerald-500/10 blur-[100px] rounded-full -z-10" />
 
-      {/* Recently Used */}
-      {recentlyUsed.length > 0 && (
-        <section className="space-y-6">
-          <div className="flex items-center gap-2">
-            <Clock className="text-indigo-600" size={24} />
-            <h2 className="text-2xl font-bold text-slate-900">Recently Used</h2>
+        <div className="max-w-4xl mx-auto text-center space-y-10">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-100 shadow-sm text-indigo-600 text-xs font-black uppercase tracking-widest"
+          >
+            <Star size={14} fill="currentColor" />
+            <span>#1 AI Tool Website & Directory</span>
+          </motion.div>
+          
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-[1.1]">
+            Find the Best <br />
+            <span className="bg-gradient-to-r from-indigo-600 to-indigo-400 bg-clip-text text-transparent italic">AI Tools</span> for Everything.
+          </h1>
+          
+          <p className="text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+            Join thousands of creators using the most powerful AI tool website. 
+            Access 100+ utilities for free, forever.
+          </p>
+
+          {/* Massive Search Bar Overlay */}
+          <div className="relative max-w-2xl mx-auto group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-[32px] blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
+            <div className="relative bg-white rounded-[28px] border border-slate-100 p-2 shadow-2xl flex items-center gap-4">
+              <div className="pl-4 text-slate-400">
+                <Search size={24} />
+              </div>
+              <input 
+                type="text" 
+                placeholder="Search by keyword (e.g., 'Writing', 'Code', 'NSFW')..." 
+                className="flex-1 bg-transparent border-none outline-none text-lg font-medium text-slate-900 placeholder:text-slate-400"
+              />
+              <button className="px-8 py-4 bg-indigo-600 text-white font-black rounded-3xl hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-200">
+                Find Tools
+              </button>
+            </div>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {recentlyUsed.map((tool) => (
+
+          <div className="flex flex-wrap items-center justify-center gap-2 pt-4">
+            <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mr-2">Trending:</span>
+            {trendingTags.map((tag) => (
               <Link 
-                key={tool.id}
-                to={tool.path}
-                className="flex flex-col items-center text-center p-4 bg-white rounded-2xl border border-slate-100 hover:border-indigo-100 hover:bg-slate-50 transition-all"
+                key={tag.label} 
+                to={tag.path}
+                className="px-4 py-1.5 bg-white border border-slate-100 rounded-xl text-xs font-bold text-slate-600 hover:border-indigo-200 hover:text-indigo-600 transition-all shadow-sm"
               >
-                <div className="w-10 h-10 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 mb-2">
-                  <tool.icon size={20} />
-                </div>
-                <span className="text-sm font-bold text-slate-900 truncate w-full">{tool.name}</span>
+                {tag.label}
               </Link>
             ))}
           </div>
-        </section>
-      )}
+        </div>
+      </section>
 
-      {/* Categories Grid */}
-      <section className="space-y-6">
-        <div className="flex items-center justify-between">
-          <h2 className="text-2xl font-bold text-slate-900">Browse by Category</h2>
-          <Link to="/categories" className="text-indigo-600 text-sm font-bold flex items-center gap-1 hover:underline">
-            View All <ArrowRight size={16} />
+      {/* Stats Bento Grid  */}
+      <section className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4">
+        {[
+          { label: 'Total Tools', value: '100+', color: 'text-indigo-600' },
+          { label: 'Category Count', value: '12+', color: 'text-emerald-600' },
+          { label: 'Daily Users', value: '5k+', color: 'text-amber-600' },
+          { label: 'Cost to Use', value: '$0', color: 'text-rose-600' }
+        ].map((item, i) => (
+          <div key={i} className="p-8 bg-white border border-slate-100 rounded-[40px] text-center shadow-sm hover:shadow-md transition-all">
+            <div className={`text-3xl font-black ${item.color} mb-1`}>{item.value}</div>
+            <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">{item.label}</div>
+          </div>
+        ))}
+      </section>
+
+      {/* Featured AI Categories */}
+      <section className="space-y-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between px-4 gap-4">
+          <div className="space-y-2">
+            <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">Browse Popular Categories</h2>
+            <p className="text-slate-500 font-medium">Explore hand-picked tools across the 100+ utilities available on our AI tool website.</p>
+          </div>
+          <Link to="/categories" className="px-6 py-3 bg-white border border-slate-100 rounded-2xl font-bold text-indigo-600 flex items-center gap-2 hover:bg-indigo-50 transition-all shadow-sm">
+            Explore All Categories <ArrowRight size={18} />
           </Link>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {categories.map((cat, idx) => (
-            <motion.div
-              key={cat.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.05 }}
-            >
-              <Link 
-                to={`/category/${cat.id}`}
-                className="group block p-6 bg-white rounded-3xl border border-slate-100 hover:border-indigo-200 hover:shadow-xl hover:shadow-indigo-500/5 transition-all h-full"
-              >
-                <div className="w-12 h-12 bg-slate-50 rounded-2xl flex items-center justify-center text-slate-600 group-hover:bg-indigo-600 group-hover:text-white transition-all mb-4">
-                  <cat.icon size={24} />
-                </div>
-                <h3 className="font-bold text-slate-900 mb-2">{cat.name}</h3>
-                <p className="text-sm text-slate-500 leading-relaxed">{cat.description}</p>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
-      </section>
 
-      {/* Popular Tools */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-2">
-          <TrendingUp className="text-indigo-600" size={24} />
-          <h2 className="text-2xl font-bold text-slate-900">Popular Tools</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {popularTools.map((tool) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-4">
+          {categories.slice(0, 8).map((cat, idx) => (
             <Link 
-              key={tool.id}
-              to={tool.path}
-              className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:border-indigo-100 hover:bg-slate-50 transition-all"
+              key={cat.id} 
+              to={`/category/${cat.id}`}
+              className="group p-8 bg-white rounded-[40px] border border-slate-100 hover:border-indigo-100 hover:shadow-2xl hover:shadow-indigo-500/5 transition-all flex flex-col items-center text-center"
             >
-              <div className="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 shrink-0">
-                <tool.icon size={24} />
+              <div className="w-16 h-16 bg-slate-50 rounded-3xl flex items-center justify-center text-slate-400 group-hover:bg-indigo-600 group-hover:text-white group-hover:scale-110 transition-all duration-500 mb-6 border border-slate-100 group-hover:border-transparent">
+                <cat.icon size={32} />
               </div>
-              <div className="min-w-0">
-                <h3 className="font-bold text-slate-900 truncate">{tool.name}</h3>
-                <p className="text-sm text-slate-500 truncate">{tool.description}</p>
-              </div>
-              <ArrowRight className="ml-auto text-slate-300 group-hover:text-indigo-600" size={20} />
+              <h3 className="text-xl font-black text-slate-900 mb-2 truncate w-full">{cat.name}</h3>
+              <p className="text-sm text-slate-500 font-medium leading-relaxed line-clamp-2">{cat.description}</p>
             </Link>
           ))}
         </div>
       </section>
 
-      {/* Recently Added */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-2">
-          <Clock className="text-indigo-600" size={24} />
-          <h2 className="text-2xl font-bold text-slate-900">Recently Added</h2>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {recentTools.map((tool) => (
-            <Link 
-              key={tool.id}
-              to={tool.path}
-              className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:border-indigo-100 hover:bg-slate-50 transition-all"
-            >
-              <div className="w-12 h-12 bg-emerald-50 rounded-xl flex items-center justify-center text-emerald-600 shrink-0">
-                <tool.icon size={24} />
+      {/* NSFW AI Special Section (The Viral hook) */}
+      <section className="bg-slate-950 -mx-6 px-6 py-24 rounded-[64px] relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-indigo-500/10 to-transparent -z-0" />
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="flex flex-col md:flex-row md:items-center justify-between mb-16 gap-10">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-500/20 text-indigo-400 rounded-full text-xs font-black uppercase tracking-widest border border-indigo-500/30">
+                <TrendingUp size={14} />
+                <span>Trending Adult Section</span>
               </div>
-              <div className="min-w-0">
-                <h3 className="font-bold text-slate-900 truncate">{tool.name}</h3>
-                <p className="text-sm text-slate-500 truncate">{tool.description}</p>
-              </div>
-              <ArrowRight className="ml-auto text-slate-300 group-hover:text-indigo-600" size={20} />
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      {/* Trending NSFW AI Tools Section */}
-      <section className="bg-slate-950 -mx-6 px-6 py-20 rounded-[48px]">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:flex-row md:items-center justify-between mb-12 gap-6">
-            <div>
-              <h2 className="text-3xl font-black text-white mb-3 tracking-tight">Trending <span className="text-indigo-500">NSFW AI</span> Tools</h2>
-              <p className="text-slate-400 max-w-xl">Discover the most popular adult AI generators and chatbots trending this week.</p>
+              <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-tight">
+                Premium NSFW <br />
+                <span className="text-indigo-500 italic">AI Tools Directory.</span>
+              </h2>
+              <p className="text-slate-400 text-lg max-w-xl font-medium">Explore the fastest-growing niche in AI. Discover uncensored chatbots, image generators, and erotic storytellers.</p>
             </div>
-            <Link to="/nsfw-ai-tools" className="inline-flex items-center gap-2 px-6 py-3 bg-white/5 text-white border border-white/10 rounded-2xl font-bold hover:bg-white/10 transition-all">
-              Explore All NSFW <ArrowRight size={18} />
+            <Link to="/nsfw-ai-tools" className="inline-flex items-center gap-4 px-10 py-5 bg-indigo-600 text-white rounded-[32px] font-black text-lg hover:bg-indigo-700 transition-all shadow-2xl shadow-indigo-500/40 group">
+              Browse Directory
+              <ArrowRight size={24} className="group-hover:translate-x-2 transition-transform" />
             </Link>
           </div>
 
@@ -225,70 +193,65 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SEO Content Section */}
-      <section className="prose prose-slate max-w-none bg-white p-8 md:p-12 rounded-[48px] border border-slate-100 shadow-sm">
-        <h2 className="text-3xl font-black text-slate-900 mb-8 tracking-tight">The Ultimate Online Toolbelt for Digital Professionals</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-          <div className="space-y-4">
-            <div className="w-12 h-12 bg-indigo-50 rounded-2xl flex items-center justify-center text-indigo-600">
-              <Star size={24} />
+      {/* Trust & Benefits Section  */}
+      <section className="bg-white border border-slate-100 rounded-[56px] p-8 md:p-20 shadow-sm mx-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="space-y-10">
+            <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+              Why Tooolify is the <br />
+              <span className="text-indigo-600 italic">Smart Choice</span> for Creators.
+            </h2>
+            
+            <div className="space-y-8">
+              {[
+                { title: 'Privacy First', icon: ShieldAlert, desc: 'Your data is handled client-side. No logs, no leaks, total privacy.' },
+                { title: 'Blazing Fast', icon: Zap, desc: 'Optimized code ensures 100% of our tools load in under 1 second.' },
+                { title: 'No Hidden Fees', icon: Star, desc: 'We don\'t hide premium features behind paywalls. Life-long free access.' }
+              ].map((benefit, i) => (
+                <div key={i} className="flex gap-6 group">
+                  <div className="h-14 w-14 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-400 group-hover:text-indigo-600 group-hover:bg-indigo-50 transition-all shrink-0">
+                    <benefit.icon size={24} />
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-slate-900 mb-1">{benefit.title}</h4>
+                    <p className="text-slate-500 font-medium leading-relaxed">{benefit.desc}</p>
+                  </div>
+                </div>
+              ))}
             </div>
-            <h3 className="text-xl font-bold text-slate-900">100+ Free Utilities</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              From **PDF merging** to **JSON formatting**, we've curated the most essential tools for your daily workflow. Every tool is tested for accuracy and speed.
-            </p>
           </div>
-          <div className="space-y-4">
-            <div className="w-12 h-12 bg-emerald-50 rounded-2xl flex items-center justify-center text-emerald-600">
-              <ShieldAlert size={24} />
+          <div className="relative bg-slate-50 rounded-[48px] p-8 aspect-square flex items-center justify-center group">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-indigo-50 blur-[100px] rounded-full group-hover:scale-110 transition-transform duration-1000" />
+            <div className="relative text-center space-y-4">
+              <div className="text-8xl font-black text-indigo-100 tracking-tighter uppercase">Trusted</div>
+              <div className="text-lg font-black text-indigo-600 uppercase tracking-widest bg-white border border-indigo-100 px-6 py-2 rounded-full shadow-xl">by 50,000+ Monthly Users</div>
             </div>
-            <h3 className="text-xl font-bold text-slate-900">Privacy-First Design</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Your data is yours. We use **client-side processing** (JavaScript) for most tools, meaning your sensitive information never even hits our servers.
-            </p>
-          </div>
-          <div className="space-y-4">
-            <div className="w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600">
-              <TrendingUp size={24} />
-            </div>
-            <h3 className="text-xl font-bold text-slate-900">SEO Optimized</h3>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Our tools like the **Meta Tag Generator** and **Keyword Density Checker** are built to help you rank higher on Google and improve your online presence.
-            </p>
           </div>
         </div>
+      </section>
 
-        <div className="space-y-8">
-          <h3 className="text-2xl font-bold text-slate-900">Comprehensive Tool Categories</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {categories.map(cat => (
-              <Link key={cat.id} to={`/category/${cat.id}`} className="p-4 bg-slate-50 rounded-2xl hover:bg-indigo-50 transition-colors border border-transparent hover:border-indigo-100">
-                <div className="font-bold text-slate-900 text-sm mb-1">{cat.name}</div>
-                <div className="text-[10px] text-slate-500 uppercase tracking-wider">Explore {cat.id} tools</div>
-              </Link>
-            ))}
-          </div>
+      {/* SEO FAQ Section */}
+      <section className="px-4 max-w-5xl mx-auto space-y-12">
+        <div className="text-center space-y-4">
+          <h2 className="text-3xl font-black text-slate-900 tracking-tight">Everything You Need to Know</h2>
+          <p className="text-slate-500 font-medium">Common questions about our AI tool website.</p>
         </div>
         
-        <div className="mt-16 pt-12 border-t border-slate-100">
-          <h3 className="text-2xl font-bold text-slate-900 mb-8">Frequently Asked Questions</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              { q: "Are these tools really free?", a: "Yes, all our basic tools are 100% free to use without any signup or subscription. We believe in providing value to the community." },
-              { q: "Is my data secure on Tooolify?", a: "Absolutely. We use industry-standard encryption and process most data locally in your browser. For tools that require server processing, files are automatically deleted after 1 hour." },
-              { q: "Can I use these tools for commercial projects?", a: "Yes, you are free to use the outputs of our tools for any personal or commercial project without any attribution required." },
-              { q: "Do you have an API for developers?", a: "We are currently developing a premium API for developers who need bulk processing. Stay tuned for our official launch!" }
-            ].map((faq, i) => (
-              <div key={i} className="p-6 bg-slate-50 rounded-3xl border border-slate-100">
-                <h4 className="font-bold text-slate-900 mb-3 flex items-start gap-3">
-                  <span className="text-indigo-600">Q:</span>
-                  {faq.q}
-                </h4>
-                <p className="text-sm text-slate-600 leading-relaxed pl-7">{faq.a}</p>
-              </div>
-            ))}
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {[
+            { q: "What makes Tooolify the best AI tool website?", a: "Tooolify focuses on high-speed, privacy-first tools that run directly in your browser. Unlike other directories, we don't just list tools; we build the most essential utilities for you to use instantly." },
+            { q: "Is it really free for commercial use?", a: "Yes. Every tool output, from AI-generated stories to formatted code, can be used commercially without any attribution. We provide professional-grade utility at zero cost." },
+            { q: "How are NSFW AI tools moderated?", a: "Our NSFW directory is a curated list of high-quality, verified services. We manually review every tool to ensure it meets our standards for privacy and safety." },
+            { q: "Do you offer API access?", a: "We are building a unified API for bulk processing. Register your interest in our 'Submit Tool' section to get early beta access." }
+          ].map((faq, i) => (
+            <div key={i} className="p-8 bg-slate-50 rounded-[32px] border border-slate-100">
+              <h4 className="font-bold text-slate-900 mb-4 flex gap-2">
+                <span className="text-indigo-600">Q.</span>
+                {faq.q}
+              </h4>
+              <p className="text-sm text-slate-600 leading-relaxed pl-5">{faq.a}</p>
+            </div>
+          ))}
         </div>
       </section>
     </div>
