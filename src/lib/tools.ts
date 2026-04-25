@@ -23,7 +23,8 @@ import {
   BookOpen,
   Mail,
   Share2,
-  Briefcase
+  Briefcase,
+  Layout
 } from 'lucide-react';
 
 export interface Tool {
@@ -61,6 +62,12 @@ export const categories: Category[] = [
     name: 'PDF Tools',
     description: 'Merge, split, compress, and convert PDF documents.',
     icon: FileText,
+  },
+  {
+    id: 'image',
+    name: 'Image Tools',
+    description: 'Compress, convert, and extract text from images and photos.',
+    icon: ImageIcon,
   },
   {
     id: 'converter',
@@ -425,6 +432,24 @@ export const tools: Tool[] = [
     icon: ImageIcon,
     path: '/image/optimizer',
     keywords: ['image compressor', 'image resizer', 'png to jpg', 'jpg to png', 'webp to jpg', 'jpg to webp', 'image converter', 'reduce image size'],
+  },
+  {
+    id: 'image-converter',
+    name: 'Image Converter',
+    description: 'Convert between JPG, PNG, and WebP formats instantly with quality control.',
+    category: 'image',
+    icon: ImageIcon,
+    path: '/image/converter',
+    keywords: ['image converter', 'jpg to png', 'png to webp', 'convert webp to jpg', 'online image converter', 'free image tool'],
+  },
+  {
+    id: 'favicon-generator',
+    name: 'Favicon Generator',
+    description: 'Generate multi-size favicons and app icons from text or images.',
+    category: 'image',
+    icon: Layout,
+    path: '/image/favicon-generator',
+    keywords: ['favicon generator', 'create favicon online', 'text to favicon', 'image to favicon', 'app icon creator'],
   },
   {
     id: 'image-to-text',

@@ -20,6 +20,9 @@ import { KeywordDensityChecker } from './pages/tools/KeywordDensityChecker';
 import { RobotsTxtGenerator } from './pages/tools/RobotsTxtGenerator';
 import { SitemapGenerator } from './pages/tools/SitemapGenerator';
 import { ImageOptimizer } from './pages/tools/ImageOptimizer';
+import { ImageToText } from './pages/tools/ImageToText';
+import { ImageConverter } from './pages/tools/ImageConverter';
+import { FaviconGenerator } from './pages/tools/FaviconGenerator';
 import { WordCounter } from './pages/tools/WordCounter';
 import { Base64 } from './pages/tools/Base64';
 import { MergePdf } from './pages/tools/MergePdf';
@@ -58,6 +61,9 @@ export default function App() {
             <Route path="/ai/:toolId" element={<GenericAITool />} />
             
             <Route path="/image/optimizer" element={<ImageOptimizer />} />
+            <Route path="/image/to-text" element={<ImageToText />} />
+            <Route path="/image/converter" element={<ImageConverter />} />
+            <Route path="/image/favicon-generator" element={<FaviconGenerator />} />
             <Route path="/text/case-converter" element={<CaseConverter />} />
             <Route path="/dev/json-formatter" element={<JsonFormatter />} />
             <Route path="/generator/password" element={<PasswordGenerator />} />
