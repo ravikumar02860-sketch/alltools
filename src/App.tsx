@@ -26,6 +26,7 @@ import { MergePdf } from './pages/tools/MergePdf';
 import { SplitPdf } from './pages/tools/SplitPdf';
 import { CompressPdf } from './pages/tools/CompressPdf';
 import { PdfToWord } from './pages/tools/PdfToWord';
+import { VideoToBlogAI } from './pages/tools/VideoToBlogAI';
 import { LoremIpsum } from './pages/tools/LoremIpsum';
 import { UnitConverter } from './pages/tools/UnitConverter';
 import { PercentageCalculator } from './pages/tools/PercentageCalculator';
@@ -72,6 +73,7 @@ export default function App() {
             <Route path="/pdf/split" element={<SplitPdf />} />
             <Route path="/pdf/compress" element={<CompressPdf />} />
             <Route path="/pdf/to-word" element={<PdfToWord />} />
+            <Route path="/ai/video-to-blog" element={<VideoToBlogAI />} />
             <Route path="/text/lorem-ipsum" element={<LoremIpsum />} />
             <Route path="/converter/unit" element={<UnitConverter />} />
             <Route path="/math/percentage" element={<PercentageCalculator />} />

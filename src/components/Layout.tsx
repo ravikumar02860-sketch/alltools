@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { categories } from '@/src/lib/tools';
 import { cn } from '@/src/lib/utils';
-import { Home, Search, Menu, X, Github, ArrowRight, Zap } from 'lucide-react';
+import { Home, Search, Menu, X, ArrowRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { tools } from '@/src/lib/tools';
 
@@ -102,14 +102,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
           </div>
 
           <div className="flex items-center gap-3">
-            <a 
-              href="https://github.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="p-2 text-slate-600 hover:text-slate-900 transition-colors hidden sm:block"
-            >
-              <Github size={20} />
-            </a>
+
             <Link 
               to="/contact"
               className="hidden sm:flex items-center gap-2 px-4 py-2 bg-slate-900 text-white text-sm font-bold rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-slate-200"
