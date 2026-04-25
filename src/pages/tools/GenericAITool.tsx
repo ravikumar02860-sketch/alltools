@@ -2,21 +2,55 @@ import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ToolPage } from '../../components/ToolPage';
 import { tools } from '../../lib/tools';
-import { motion } from 'motion/react';
-import { Sparkles, ArrowRight, Zap, Shield, Clock, MousePointer2 } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Sparkles, ArrowRight, Zap, Shield, Clock, MousePointer2, Loader2, Copy, Check, Download } from 'lucide-react';
+import { generateContent } from '../../services/geminiService';
 
 export const GenericAITool: React.FC = () => {
   const { toolId } = useParams<{ toolId: string }>();
   const tool = tools.find(t => t.id === toolId || t.path.split('/').pop() === toolId);
+  
+  const [prompt, setPrompt] = React.useState('');
+  const [result, setResult] = React.useState('');
+  const [isGenerating, setIsGenerating] = React.useState(false);
+  const [copied, setCopied] = React.useState(false);
 
   if (!tool) {
     return (
       <div className="text-center py-20">
-        <h1 className="text-2xl font-bold">Tool Not Found</h1>
-        <Link to="/" className="text-indigo-600 hover:underline mt-4 inline-block">Go back home</Link>
+        <h1 className="text-2xl font-bold text-slate-900 font-display">Tool Not Found</h1>
+        <Link to="/" className="text-indigo-600 hover:underline mt-4 inline-block font-medium">Go back home</Link>
       </div>
     );
   }
+
+  const handleGenerate = async () => {
+    if (!prompt.trim()) return;
+    setIsGenerating(true);
+    setResult('');
+    
+    try {
+      const fullPrompt = `You are a high-performance AI assistant for the tool "${tool.name}". 
+      Description of the tool: ${tool.description}
+      User Input: ${prompt}
+      
+      Generate the best possible output for this specific tool. If it's a writing tool, write high-quality content. If it's a generator, provide the results clearly.`;
+      
+      const response = await generateContent(fullPrompt);
+      setResult(response);
+    } catch (error) {
+      console.error('Generation error:', error);
+      alert('Failed to generate content. Please try again.');
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(result);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const benefits = [
     { icon: Zap, title: 'Lightning Fast', desc: 'Get results in seconds with our optimized AI engines.' },
@@ -65,35 +99,73 @@ Start using the **${tool.name}** today and experience the future of digital prod
       ]}
     >
       <div className="space-y-10">
-        {/* Placeholder UI for the AI Tool */}
         <div className="relative group">
           <div className="absolute -inset-1 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-[40px] blur opacity-20 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-          <div className="relative bg-white border border-slate-100 rounded-[32px] p-8 md:p-12 text-center space-y-6">
+          <div className="relative bg-white border border-slate-100 rounded-[32px] p-8 md:p-12 text-center space-y-8">
             <div className="w-20 h-20 bg-indigo-50 rounded-3xl flex items-center justify-center text-indigo-600 mx-auto group-hover:scale-110 transition-transform duration-500">
               <tool.icon size={40} />
             </div>
             
             <div className="space-y-2">
-              <h2 className="text-2xl font-black text-slate-900 tracking-tight">Ready to Generate?</h2>
+              <h2 className="text-3xl font-black text-slate-900 tracking-tight font-display">Ready to Generate?</h2>
               <p className="text-slate-500 font-medium">Use our advanced AI engine to get started with {tool.name}.</p>
             </div>
 
-            <div className="max-w-xl mx-auto pt-4">
+            <div className="max-w-2xl mx-auto space-y-6">
               <div className="relative">
                 <textarea 
-                  placeholder={`Enter your prompt or data for ${tool.name}...`}
-                  className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none min-h-[120px] transition-all text-slate-700 placeholder:text-slate-400 font-medium"
+                  value={prompt}
+                  onChange={(e) => setPrompt(e.target.value)}
+                  placeholder={`Enter your requirements for ${tool.name}...`}
+                  className="w-full px-6 py-5 bg-slate-50 border border-slate-100 rounded-2xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none min-h-[160px] transition-all text-slate-700 placeholder:text-slate-400 font-medium"
                 />
+              </div>
+
+              <div className="flex justify-center">
+                <button 
+                  onClick={handleGenerate}
+                  disabled={isGenerating || !prompt.trim()}
+                  className="inline-flex items-center gap-3 px-12 py-5 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/30 group disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isGenerating ? (
+                    <Loader2 size={24} className="animate-spin" />
+                  ) : (
+                    <Sparkles size={24} />
+                  )}
+                  <span>{isGenerating ? 'AI is Thinking...' : 'Generate Result'}</span>
+                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                </button>
               </div>
             </div>
 
-            <div className="pt-4">
-              <button className="inline-flex items-center gap-3 px-10 py-5 bg-indigo-600 text-white font-black rounded-2xl hover:bg-indigo-700 transition-all shadow-xl shadow-indigo-600/30 group">
-                <Sparkles size={20} />
-                <span>Generate Content Now</span>
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </div>
+            <AnimatePresence>
+              {result && (
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="pt-8 space-y-4"
+                >
+                  <div className="flex items-center justify-between border-b border-slate-100 pb-4">
+                    <div className="flex items-center gap-2 text-indigo-600 text-sm font-black uppercase tracking-widest">
+                      <Sparkles size={16} />
+                      <span>AI Output</span>
+                    </div>
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={handleCopy}
+                        className="flex items-center gap-2 px-6 py-2.5 bg-slate-900 text-white text-xs font-black rounded-xl hover:bg-slate-800 transition-all active:scale-95"
+                      >
+                        {copied ? <Check size={16} /> : <Copy size={16} />}
+                        {copied ? 'Copied' : 'Copy Result'}
+                      </button>
+                    </div>
+                  </div>
+                  <div className="p-8 bg-slate-50 border border-slate-100 rounded-3xl text-left text-slate-700 leading-relaxed whitespace-pre-wrap font-medium">
+                    {result}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <div className="flex items-center justify-center gap-6 pt-6 text-slate-400">
               <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest text-emerald-500">
@@ -103,7 +175,7 @@ Start using the **${tool.name}** today and experience the future of digital prod
               <div className="w-1 h-1 bg-slate-200 rounded-full"></div>
               <div className="flex items-center gap-1.5 text-[10px] font-black uppercase tracking-widest">
                 <MousePointer2 size={12} />
-                <span>One-Click Result</span>
+                <span>Instant Result</span>
               </div>
             </div>
           </div>

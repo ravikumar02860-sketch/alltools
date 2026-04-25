@@ -1,7 +1,8 @@
 import React from 'react';
 import { ToolPage } from '@/src/components/ToolPage';
 import { FileText, Scissors, Download, Loader2, Trash2 } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
+import { PDFDocument } from 'pdf-lib';
 
 export const SplitPdf: React.FC = () => {
   const [file, setFile] = React.useState<File | null>(null);
@@ -9,21 +10,76 @@ export const SplitPdf: React.FC = () => {
   const [isSuccess, setIsSuccess] = React.useState(false);
   const [splitMode, setSplitMode] = React.useState<'all' | 'range'>('all');
   const [range, setRange] = React.useState('');
+  const [resultBlob, setResultBlob] = React.useState<Blob | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
       setFile(e.target.files[0]);
+      setIsSuccess(false);
+      setResultBlob(null);
     }
   };
 
-  const handleSplit = () => {
+  const handleSplit = async () => {
     if (!file) return;
     setIsProcessing(true);
-    setTimeout(() => {
-      setIsProcessing(false);
+    
+    try {
+      const arrayBuffer = await file.arrayBuffer();
+      const pdf = await PDFDocument.load(arrayBuffer);
+      const totalPages = pdf.getPageCount();
+      
+      const newPdf = await PDFDocument.create();
+      let pagesToExtract: number[] = [];
+      
+      if (splitMode === 'all') {
+        pagesToExtract = Array.from({ length: totalPages }, (_, i) => i);
+      } else {
+        // Parse range: 1-5, 8, 10-12
+        const parts = range.split(',').map(p => p.trim());
+        for (const part of parts) {
+          if (part.includes('-')) {
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+              if (i >= 1 && i <= totalPages) pagesToExtract.push(i - 1);
+            }
+          } else {
+            const page = Number(part);
+            if (page >= 1 && page <= totalPages) pagesToExtract.push(page - 1);
+          }
+        }
+      }
+      
+      if (pagesToExtract.length === 0) {
+        throw new Error('No valid pages found in range.');
+      }
+      
+      const copiedPages = await newPdf.copyPages(pdf, pagesToExtract);
+      copiedPages.forEach((page) => newPdf.addPage(page));
+      
+      const pdfBytes = await newPdf.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      setResultBlob(blob);
       setIsSuccess(true);
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error('Error splitting PDF:', error);
+      alert('Error splitting PDF. Please check your range format.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleDownload = () => {
+    if (resultBlob) {
+      const url = URL.createObjectURL(resultBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `split_${file?.name || 'document.pdf'}`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
   };
 
   return (
@@ -130,7 +186,7 @@ How to split a PDF:
 
             <div className="pt-6 border-t flex justify-end">
               <button 
-                onClick={handleSplit}
+                onClick={isSuccess ? handleDownload : handleSplit}
                 disabled={isProcessing}
                 className="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all flex items-center gap-3 disabled:opacity-50"
               >

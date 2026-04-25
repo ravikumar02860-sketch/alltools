@@ -2,20 +2,26 @@ import React from 'react';
 import { ToolPage } from '@/src/components/ToolPage';
 import { FileText, Plus, Trash2, ArrowUp, ArrowDown, Download, Loader2 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { PDFDocument } from 'pdf-lib';
 
 export const MergePdf: React.FC = () => {
   const [files, setFiles] = React.useState<File[]>([]);
   const [isProcessing, setIsProcessing] = React.useState(false);
   const [isSuccess, setIsSuccess] = React.useState(false);
+  const [mergedBlob, setMergedBlob] = React.useState<Blob | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files) {
       setFiles([...files, ...Array.from(e.target.files)]);
+      setMergedBlob(null);
+      setIsSuccess(false);
     }
   };
 
   const removeFile = (index: number) => {
     setFiles(files.filter((_, i) => i !== index));
+    setMergedBlob(null);
+    setIsSuccess(false);
   };
 
   const moveFile = (index: number, direction: 'up' | 'down') => {
@@ -24,18 +30,48 @@ export const MergePdf: React.FC = () => {
     if (targetIndex >= 0 && targetIndex < newFiles.length) {
       [newFiles[index], newFiles[targetIndex]] = [newFiles[targetIndex], newFiles[index]];
       setFiles(newFiles);
+      setMergedBlob(null);
+      setIsSuccess(false);
     }
   };
 
-  const handleMerge = () => {
+  const handleMerge = async () => {
     if (files.length < 2) return;
     setIsProcessing(true);
-    // Simulate processing
-    setTimeout(() => {
-      setIsProcessing(false);
+    
+    try {
+      const mergedPdf = await PDFDocument.create();
+      
+      for (const file of files) {
+        const arrayBuffer = await file.arrayBuffer();
+        const pdf = await PDFDocument.load(arrayBuffer);
+        const copiedPages = await mergedPdf.copyPages(pdf, pdf.getPageIndices());
+        copiedPages.forEach((page) => mergedPdf.addPage(page));
+      }
+      
+      const pdfBytes = await mergedPdf.save();
+      const blob = new Blob([pdfBytes], { type: 'application/pdf' });
+      setMergedBlob(blob);
       setIsSuccess(true);
-      setTimeout(() => setIsSuccess(false), 5000);
-    }, 2000);
+    } catch (error) {
+      console.error('Error merging PDFs:', error);
+      alert('An error occurred while merging PDFs. Please check your files.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleDownload = () => {
+    if (mergedBlob) {
+      const url = URL.createObjectURL(mergedBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = 'merged.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    }
   };
 
   return (
@@ -139,7 +175,7 @@ Our tool is designed to be the most user-friendly and secure PDF binder availabl
               <span className="font-bold text-slate-900">{files.length}</span> files selected
             </div>
             <button 
-              onClick={handleMerge}
+              onClick={isSuccess ? handleDownload : handleMerge}
               disabled={isProcessing}
               className="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl hover:bg-slate-800 transition-all flex items-center gap-3 disabled:opacity-50"
             >

@@ -369,7 +369,10 @@ Document management shouldn't be a struggle. Our **PDF to Word converter** is de
                     <p className="text-slate-500 font-medium">Your editable Word document has been generated perfectly.</p>
                   </div>
                   <div className="flex flex-col gap-4 w-full max-w-sm">
-                    <button className="w-full px-8 py-6 bg-emerald-600 text-white font-black rounded-[32px] shadow-2xl shadow-emerald-600/30 hover:bg-emerald-700 transition-all flex items-center justify-center gap-4 text-lg">
+                    <button 
+                      onClick={handleConvert}
+                      className="w-full px-8 py-6 bg-emerald-600 text-white font-black rounded-[32px] shadow-2xl shadow-emerald-600/30 hover:bg-emerald-700 transition-all flex items-center justify-center gap-4 text-lg"
+                    >
                       <Download size={24} />
                       Download Word File
                     </button>
