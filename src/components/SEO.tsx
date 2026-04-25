@@ -22,7 +22,11 @@ export const SEO: React.FC<SEOProps> = ({
 }) => {
   const siteName = 'Tooolify';
   const fullTitle = `${title} | ${siteName}`;
-  const currentUrl = canonical || window.location.href;
+  const siteUrl = 'https://tooolify.vercel.app';
+  
+  // Normalize URL for canonical tag
+  const cleanPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  const currentUrl = canonical ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`) : `${siteUrl}${cleanPath}`;
 
   return (
     <Helmet>

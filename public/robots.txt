@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /nsfw/ # Disallow direct category listing if we want to prioritize specialized landing pages
 
 Sitemap: https://tooolify.vercel.app/sitemap.xml
