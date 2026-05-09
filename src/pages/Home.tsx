@@ -62,7 +62,7 @@ export const Home: React.FC = () => {
         "name": "What is Tooolify?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tooolify is the ultimate free online AI tool website, offering over 100 utilities including image converters, SEO generators, PDF tools, and developer utilities."
+          "text": "Tooolify is a free online tools website with 100+ utilities including AI generators, tools name in Hindi and English, tools images, tools list, tool box info, tool bag guides, toolbar utilities, and developer tools."
         }
       },
       {
@@ -80,6 +80,22 @@ export const Home: React.FC = () => {
           "@type": "Answer",
           "text": "Absolutely. Most of our tools process files locally in your browser, and we never store your personal data or uploaded documents on our servers."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "What are tools name in Hindi?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common tools name in Hindi: Hammer - हथौड़ा, Wrench - रिंच, Screwdriver - पेचकश, Pliers - प्लायर्स, Drill Machine - ड्रिल मशीन, Tool Box - टूल बॉक्स, Tool Bag - टूल बैग, Chisel - छेनी, Saw - आरी."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Tooolify AI offer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tooolify AI offers free AI image generators, AI video to blog converter, AI writing tools, AI document analysis, and more — all powered by cutting-edge AI models with no signup required."
+        }
       }
     ]
   };
@@ -87,15 +103,22 @@ export const Home: React.FC = () => {
   return (
     <div className="space-y-32 pb-32 overflow-hidden">
       <SEO 
-        title="Tooolify | #1 Free AI Tool Website & Online Utilities" 
-        description="Access over 100+ free online utilities on Tooolify, the best AI tool website for creators. Fast, secure, and always free online tools for everyone."
-        keywords={['free ai tool website', 'online utilities', 'best ai generators', 'seo tools online', 'developer tools', 'ai document converter']}
+        title="Tooolify | #1 Free Online Tools Website — Tools Name, Images, AI Utilities" 
+        description="Tooolify offers 100+ free online tools: tools name in Hindi & English, tools images, tool box, tool bag, toolbar, tools drawing, tools list, AI generators, PDF tools and more. No signup needed."
+        keywords={[
+          'tools name', 'tools name in hindi', 'tools name in english', 'tools images',
+          'tools list', 'tool box', 'tool bag', 'toolbar', 'tools drawing', 'tools set',
+          'toolify', 'toolify ai', 'free ai tool website', 'online utilities',
+          'tools in hindi', 'tools definition', 'tools wrench', 'tools icon',
+          'tools in computer', 'tools diagram', 'tools name with picture',
+          'tools drawing with name', 'tools drawing easy with names', 'tool belt',
+          'tools qa', 'tools in ai', 'tools website', 'tool box price', 'toolsvilla'
+        ]}
         schema={homeFaqSchema}
       />
 
       {/* Hero Section */}
       <section className="relative pt-24 pb-32 px-4 overflow-hidden -mt-16">
-        {/* Modern Aura Background */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[800px] bg-gradient-to-b from-indigo-50/30 to-transparent -z-10" />
         <div className="absolute -top-48 left-1/4 w-[500px] h-[500px] bg-indigo-200/20 blur-[140px] rounded-full -z-10 animate-pulse" />
         <div className="absolute top-48 right-1/4 w-[400px] h-[400px] bg-emerald-200/20 blur-[120px] rounded-full -z-10" />
@@ -126,7 +149,7 @@ export const Home: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-slate-500 max-w-2xl mx-auto font-medium"
           >
-            100+ precision tools powered by intelligence. No logins, no limits, no friction. Just open and build.
+            100+ free online tools — tools name in English &amp; Hindi, tools images, tools drawing, tool box, tool bag, AI generators and more. No logins, no limits.
           </motion.p>
 
           {/* Premium Search Bar */}
@@ -143,7 +166,7 @@ export const Home: React.FC = () => {
               </div>
               <input 
                 type="text" 
-                placeholder="Search tools (e.g. PDF to Word, Image OCR...)" 
+                placeholder="Search tools (e.g. PDF to Word, Image OCR, tools name in Hindi...)" 
                 className="flex-1 bg-transparent border-none outline-none text-lg font-medium text-slate-900 placeholder:text-slate-400 p-4"
               />
               <button className="px-10 py-5 bg-slate-950 text-white font-black rounded-[32px] hover:bg-indigo-600 transition-all flex items-center gap-2 group/btn">
@@ -189,7 +212,7 @@ export const Home: React.FC = () => {
             </div>
             <div className="flex items-center gap-8 pt-8">
               <div className="flex flex-col">
-                <span className="text-3xl font-black text-slate-900tracking-tighter uppercase whitespace-nowrap">0.3s</span>
+                <span className="text-3xl font-black text-slate-900 tracking-tighter uppercase whitespace-nowrap">0.3s</span>
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Avg Latency</span>
               </div>
               <div className="w-px h-10 bg-slate-100" />
@@ -242,13 +265,13 @@ export const Home: React.FC = () => {
             </div>
             <div className="space-y-1">
               <span className="text-4xl font-black font-display tracking-tight leading-none">50K+</span>
-              <p className="text-white/60 font-medium">Active monthly developers & creators using Tooolify.</p>
+              <p className="text-white/60 font-medium">Active monthly developers &amp; creators using Tooolify.</p>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Browse Popular Categories (High Contrast Layout) */}
+      {/* Browse Popular Categories */}
       <section className="space-y-16 max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-slate-100 pb-12">
           <div className="space-y-3">
@@ -282,6 +305,128 @@ export const Home: React.FC = () => {
             </motion.div>
           ))}
         </motion.div>
+      </section>
+
+      {/* ✅ NEW: SEO Keyword Section — Tools Name in English & Hindi */}
+      <section className="max-w-7xl mx-auto px-6 py-16 bg-slate-50 rounded-[48px]">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight mb-4">
+            Tools Name in English &amp; Hindi
+          </h2>
+          <p className="text-slate-500 font-medium text-lg max-w-2xl mx-auto">
+            Complete tools name list with pictures — from tool box and tool bag to drill machine, wrench, and more. Explore tools in Hindi meaning and English.
+          </p>
+        </div>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+          {[
+            { en: 'Hammer', hi: 'हथौड़ा', emoji: '🔨' },
+            { en: 'Wrench', hi: 'रिंच', emoji: '🔧' },
+            { en: 'Screwdriver', hi: 'पेचकश', emoji: '🪛' },
+            { en: 'Pliers', hi: 'प्लायर्स', emoji: '🪚' },
+            { en: 'Drill Machine', hi: 'ड्रिल', emoji: '🔩' },
+            { en: 'Tool Box', hi: 'टूल बॉक्स', emoji: '🧰' },
+            { en: 'Tool Bag', hi: 'टूल बैग', emoji: '👜' },
+            { en: 'Saw', hi: 'आरी', emoji: '🪚' },
+            { en: 'Chisel', hi: 'छेनी', emoji: '🪛' },
+            { en: 'Tool Belt', hi: 'टूल बेल्ट', emoji: '🎽' },
+          ].map((tool) => (
+            <div key={tool.en} className="bg-white rounded-2xl p-4 text-center ring-1 ring-slate-100 hover:ring-indigo-200 transition-all">
+              <div className="text-3xl mb-2">{tool.emoji}</div>
+              <div className="font-black text-slate-900 text-sm">{tool.en}</div>
+              <div className="text-indigo-600 text-xs font-bold mt-1">{tool.hi}</div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-8">
+          <p className="text-slate-500 text-sm font-medium">
+            Looking for tools near me, tools shop near me, tools store near me, tool repair shop near me, or tools wholesale market? 
+            Use our tools directory to find what you need.
+          </p>
+        </div>
+      </section>
+
+      {/* ✅ NEW: SEO Keyword Section — Tools Categories & Keywords */}
+      <section className="max-w-7xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight mb-4">
+            Everything You Need — One Tools Website
+          </h2>
+          <p className="text-slate-500 font-medium text-lg max-w-3xl mx-auto">
+            Whether you're searching for tools drawing, tools images, tools logo, tools icon, tools diagram, 
+            tools list name, tools in geometry box, tools in ms paint, tools in photoshop, 
+            or tools in computer — Tooolify has it all.
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {/* Column 1: For Students & Teachers */}
+          <div className="bg-white rounded-[32px] p-8 ring-1 ring-slate-100">
+            <h3 className="text-xl font-black text-slate-900 mb-4">🎓 For Students &amp; Teachers</h3>
+            <ul className="space-y-2 text-sm text-slate-600 font-medium">
+              <li>✅ Tools name with picture</li>
+              <li>✅ Tools drawing easy with names</li>
+              <li>✅ Tools name in English and Hindi</li>
+              <li>✅ Tools sentence for class 1</li>
+              <li>✅ Tools in geometry box</li>
+              <li>✅ Tools diagram</li>
+              <li>✅ Tools synonyms &amp; definition</li>
+              <li>✅ Tools quotes &amp; words</li>
+            </ul>
+          </div>
+
+          {/* Column 2: For Developers & QA */}
+          <div className="bg-white rounded-[32px] p-8 ring-1 ring-slate-100">
+            <h3 className="text-xl font-black text-slate-900 mb-4">💻 For Developers &amp; QA</h3>
+            <ul className="space-y-2 text-sm text-slate-600 font-medium">
+              <li>✅ Tools QA &amp; Selenium</li>
+              <li>✅ Tools QA TestNG</li>
+              <li>✅ Tools QA demo site</li>
+              <li>✅ Tools in computer</li>
+              <li>✅ Tools name in computer</li>
+              <li>✅ Tools in AI &amp; LangChain</li>
+              <li>✅ Tools to learn for data analyst</li>
+              <li>✅ Tools to learn for business analyst</li>
+            </ul>
+          </div>
+
+          {/* Column 3: For Creators & Professionals */}
+          <div className="bg-white rounded-[32px] p-8 ring-1 ring-slate-100">
+            <h3 className="text-xl font-black text-slate-900 mb-4">🎨 For Creators &amp; Professionals</h3>
+            <ul className="space-y-2 text-sm text-slate-600 font-medium">
+              <li>✅ Tools in Photoshop &amp; MS Paint</li>
+              <li>✅ Tools logo &amp; logo design</li>
+              <li>✅ Tools icon &amp; vector</li>
+              <li>✅ Tools to make PPT using AI</li>
+              <li>✅ Tools to write a research paper</li>
+              <li>✅ Tools to humanize AI content</li>
+              <li>✅ Toolify AI image generator</li>
+              <li>✅ Toolify AI Wan 2.2 animate</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* ✅ NEW: Keyword-rich info strip */}
+      <section className="bg-indigo-600 py-12 px-6">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-3">
+            {[
+              'toolfly', 'toolify al', 'toolsvilla', 'tools ninja', 'tools india', 
+              'tools world', 'tools town', 'tools qatar', 'tools warehouse',
+              'tool room', 'tool rack', 'tool roll', 'tool rent', 'tool belt',
+              'tools stand', 'tools trolley', 'tools tackles', 'tools lanyard',
+              'tools wall mount', 'tools storage box', 'tools display board',
+              'tool box talk', 'tools set box', 'tool bag heavy duty',
+              'tool bag electrician', 'tools wholesale market', 'tools wholesaler near me'
+            ].map((kw) => (
+              <span key={kw} className="px-3 py-1.5 bg-white/10 text-white text-xs font-bold rounded-full border border-white/20">
+                {kw}
+              </span>
+            ))}
+          </div>
+          <p className="text-center text-white/60 text-xs font-medium mt-6">
+            Your one-stop tools website — from tools shop near me to toolify AI, we cover it all.
+          </p>
+        </div>
       </section>
 
       {/* NSFW AI - Premium Dark Mode */}
@@ -318,15 +463,57 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Final CTA / Social Proof Area */}
+      {/* ✅ NEW: FAQ Section for long-tail keywords */}
+      <section className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-display font-black text-slate-900 tracking-tight mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-slate-500 font-medium">Everything about Tooolify, tools name, tools images, and more.</p>
+        </div>
+        <div className="space-y-4">
+          {[
+            {
+              q: "What are common tools name in English with pictures?",
+              a: "Common tools include: Hammer, Wrench, Screwdriver, Pliers, Drill Machine, Saw, Chisel, Tool Box, Tool Bag, Tool Belt, Tool Rack, Tool Roll, and more. Tooolify provides tools name with picture and tools drawing with name for all major hand tools and power tools."
+            },
+            {
+              q: "What is the tools definition?",
+              a: "A tool is any instrument, device, or implement used to carry out a particular function. Tools definition encompasses hand tools (hammer, wrench, pliers), power tools (drill machine), digital tools (software, apps), and AI tools. Tooolify offers both physical tools information and 100+ digital/AI tools."
+            },
+            {
+              q: "What are tools in WhatsApp and tools in Photoshop?",
+              a: "Tools in WhatsApp include features like voice typing, SMS bomber (third-party), and messaging utilities. Tools in Photoshop include the toolbar with selection tools, brush tools, crop tool, clone stamp, healing brush, text tool, and more. Tooolify's online toolkit replicates many of these functions for free."
+            },
+            {
+              q: "What is Toolify AI (toolify.ai)?",
+              a: "Toolify AI (http://toolify.ai) is an AI tool directory. Tooolify (tooolify.vercel.app) is a similar free tools website offering 100+ utilities including AI image generator, Toolify AI Wan 2.2 animate-style tools, and more — all completely free."
+            },
+            {
+              q: "Where can I find tools shop near me or tools store near me?",
+              a: "For physical tools shop near me or tools store near me, you can search Google Maps. For online tools, Tooolify is your best free tools website with 100+ digital and AI tools available instantly — no need to visit a tool repair shop near me."
+            },
+            {
+              q: "What tools should a data analyst or business analyst learn?",
+              a: "Tools to learn for data analyst: Python, SQL, Tableau, Power BI, Excel, R. Tools to learn for business analyst: JIRA, Confluence, MS Excel, Power BI, SQL, Visio. Tooolify also offers tools QA, tools QA Selenium, and tools QA TestNG resources."
+            },
+          ].map((faq, i) => (
+            <div key={i} className="bg-white rounded-2xl p-6 ring-1 ring-slate-100">
+              <h3 className="font-black text-slate-900 mb-2">{faq.q}</h3>
+              <p className="text-slate-600 text-sm font-medium leading-relaxed">{faq.a}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <section className="bg-slate-50 border-y border-slate-100 py-32 px-4 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/5 to-transparent pointer-events-none" />
         <div className="max-w-4xl mx-auto text-center space-y-12 relative z-10">
           <div className="space-y-4">
             <h2 className="text-5xl md:text-6xl font-display font-black tracking-tight text-slate-950">Free Forever. For Everyone.</h2>
             <p className="text-xl text-slate-500 font-medium max-w-2xl mx-auto leading-relaxed">
-              Tooolify is a passion project built for the builders. 
-              Always high speed, always privacy-focused, always free.
+              Tooolify is the ultimate free tools website — for tools name in Hindi, tools images, tools QA, AI utilities, and beyond. Always fast, always private, always free.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
@@ -337,12 +524,14 @@ export const Home: React.FC = () => {
               Our Vision
             </Link>
           </div>
-          <div className="flex items-center justify-center gap-4 text-slate-400 font-bold uppercase tracking-widest text-[10px] pt-8">
+          <div className="flex flex-wrap items-center justify-center gap-4 text-slate-400 font-bold uppercase tracking-widest text-[10px] pt-8">
             <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-emerald-500" /> No Credit Card</span>
             <div className="w-1 h-1 bg-slate-200 rounded-full" />
             <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-emerald-500" /> Open Source Heart</span>
             <div className="w-1 h-1 bg-slate-200 rounded-full" />
             <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-emerald-500" /> Privacy First</span>
+            <div className="w-1 h-1 bg-slate-200 rounded-full" />
+            <span className="flex items-center gap-1.5"><CheckCircle size={14} className="text-emerald-500" /> 100+ Free Tools</span>
           </div>
         </div>
       </section>
