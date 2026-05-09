@@ -1,17 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { X } from 'lucide-react';
-import { cn } from '@/src/lib/utils';
+import React, { useEffect } from 'react';
 
 interface AdPlacementProps {
   type: 'header' | 'footer' | 'side-left' | 'side-right';
 }
 
 export const AdPlacement: React.FC<AdPlacementProps> = ({ type }) => {
-  const [isVisible, setIsVisible] = useState(true);
-
   useEffect(() => {
-    if (!isVisible) return;
-
     const containerId = `ad-container-${type}`;
     const container = document.getElementById(containerId);
     
@@ -53,32 +47,19 @@ export const AdPlacement: React.FC<AdPlacementProps> = ({ type }) => {
       script4.async = true;
       container.appendChild(script4);
     }
-  }, [type, isVisible]);
-
-  if (!isVisible) return null;
+  }, [type]);
 
   const getClasses = () => {
     switch (type) {
-      case 'header': return 'w-full flex flex-col items-center justify-center py-4 bg-slate-50 border-b overflow-hidden min-h-[90px] relative z-10';
-      case 'footer': return 'w-full flex flex-col items-center justify-center py-8 bg-white border-t overflow-hidden min-h-[90px] relative z-10';
-      case 'side-left': return 'hidden 2xl:block fixed left-2 top-1/2 -translate-y-1/2 w-[160px] min-h-[600px] z-30 transition-opacity duration-300';
-      case 'side-right': return 'hidden 2xl:block fixed right-2 top-1/2 -translate-y-1/2 w-[160px] min-h-[600px] z-30 transition-opacity duration-300';
+      case 'header': return 'w-full flex flex-col items-center justify-center py-4 bg-slate-50 border-b overflow-hidden min-h-[90px]';
+      case 'footer': return 'w-full flex flex-col items-center justify-center py-8 bg-white border-t overflow-hidden min-h-[90px]';
+      case 'side-left': return 'hidden xl:block fixed left-4 top-1/2 -translate-y-1/2 w-[160px] min-h-[600px] z-30';
+      case 'side-right': return 'hidden xl:block fixed right-4 top-1/2 -translate-y-1/2 w-[160px] min-h-[600px] z-30';
       default: return '';
     }
   };
 
   return (
-    <div className={cn("relative group", getClasses())}>
-      {(type === 'side-left' || type === 'side-right') && (
-        <button 
-          onClick={() => setIsVisible(false)}
-          className="absolute -top-8 left-0 right-0 mx-auto w-8 h-8 bg-slate-900 border border-slate-700 text-white rounded-full flex items-center justify-center hover:bg-indigo-600 transition-colors z-[50]"
-          title="Close Ad"
-        >
-          <X size={16} />
-        </button>
-      )}
-      <div id={`ad-container-${type}`} className="w-full h-full" />
-    </div>
+    <div id={`ad-container-${type}`} className={getClasses()} />
   );
 };
