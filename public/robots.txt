@@ -1,27 +1,5 @@
 User-agent: *
 Allow: /
-
-# Disallow admin/private routes if any
 Disallow: /api/
-Disallow: /*.json$
-
-# Allow important pages
-Allow: /category/
-Allow: /blog/
-Allow: /tools/
-Allow: /ai/
-Allow: /seo/
-Allow: /pdf/
-Allow: /image/
-Allow: /text/
-Allow: /generator/
-Allow: /converter/
-Allow: /math/
-Allow: /dev/
-Allow: /security/
-
-# Crawl-delay for polite crawling
 Crawl-delay: 1
-
-# Sitemap location
 Sitemap: https://tooolify.vercel.app/sitemap.xml

@@ -114,7 +114,6 @@ export const Home: React.FC = () => {
           'tools drawing with name', 'tools drawing easy with names', 'tool belt',
           'tools qa', 'tools in ai', 'tools website', 'tool box price', 'toolsvilla'
         ]}
-        schema={homeFaqSchema}
       />
 
       {/* Hero Section */}
