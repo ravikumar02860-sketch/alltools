@@ -93,9 +93,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                       </Link>
                     ))}
                   </div>
-                  <div className="p-3 bg-slate-50 border-t text-center text-xs font-bold text-indigo-600 hover:bg-indigo-50 transition-colors cursor-pointer">
+                  <Link 
+                    to={`/search?q=${searchQuery}`}
+                    className="p-3 bg-slate-50 border-t block text-center text-xs font-bold text-indigo-600 hover:bg-indigo-50 transition-colors cursor-pointer"
+                  >
                     View All Results
-                  </div>
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -135,6 +138,16 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               >
                 <Home size={18} />
                 Home
+              </Link>
+
+              <Link 
+                to="/search" 
+                className={cn(
+                  "flex lg:hidden items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium transition-all text-slate-600 hover:bg-slate-100"
+                )}
+              >
+                <Search size={18} />
+                Search Tools
               </Link>
               
               <div className="mt-4 mb-2 px-4 text-xs font-semibold text-slate-400 uppercase tracking-wider">
@@ -199,21 +212,27 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
               </p>
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm text-slate-600">
-                <li><Link to="/" className="hover:text-indigo-600">Home</Link></li>
-                <li><Link to="/about" className="hover:text-indigo-600">About Us</Link></li>
-                <li><Link to="/blog" className="hover:text-indigo-600">Blog</Link></li>
-                <li><Link to="/contact" className="hover:text-indigo-600">Contact</Link></li>
-                <li><Link to="/sitemap" className="hover:text-indigo-600">Sitemap</Link></li>
+              <h4 className="font-bold text-slate-900 mb-4">Categories</h4>
+              <ul className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-600">
+                {categories.map(cat => (
+                  <li key={cat.id}>
+                    <Link to={`/category/${cat.id}`} className="hover:text-indigo-600 truncate block">
+                      {cat.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
-              <h4 className="font-bold text-slate-900 mb-4">Legal</h4>
+              <h4 className="font-bold text-slate-900 mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm text-slate-600">
-                <li><Link to="/privacy" className="hover:text-indigo-600">Privacy Policy</Link></li>
+                <li><Link to="/about" className="hover:text-indigo-600">About Us</Link></li>
+                <li><Link to="/contact" className="hover:text-indigo-600">Contact</Link></li>
+                <li><Link to="/changelog" className="hover:text-indigo-600">Changelog</Link></li>
+                <li><Link to="/faq" className="hover:text-indigo-600">FAQ</Link></li>
+                <li><Link to="/pricing" className="hover:text-indigo-600">Pricing</Link></li>
                 <li><Link to="/terms" className="hover:text-indigo-600">Terms of Service</Link></li>
-                <li><Link to="/cookies" className="hover:text-indigo-600">Cookie Policy</Link></li>
+                <li><Link to="/privacy" className="hover:text-indigo-600">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>

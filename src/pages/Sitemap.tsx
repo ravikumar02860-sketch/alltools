@@ -32,6 +32,9 @@ export const Sitemap: React.FC = () => {
             <li><Link to="/" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Home</Link></li>
             <li><Link to="/about" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> About Us</Link></li>
             <li><Link to="/contact" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Contact</Link></li>
+            <li><Link to="/changelog" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Changelog</Link></li>
+            <li><Link to="/faq" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> FAQ</Link></li>
+            <li><Link to="/pricing" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Pricing</Link></li>
             <li><Link to="/blog" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Blog</Link></li>
             <li><Link to="/privacy" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Privacy Policy</Link></li>
             <li><Link to="/terms" className="text-slate-600 hover:text-indigo-600 flex items-center gap-2"><ChevronRight size={14} /> Terms of Service</Link></li>

@@ -46,19 +46,51 @@ export const Home: React.FC = () => {
   const trendingNsfw = nsfwTools.slice(0, 8);
 
   const trendingTags = [
-    { label: 'PDF to Word', path: '/pdf/to-word' },
-    { label: 'AI Video', path: '/ai/video-to-blog' },
-    { label: 'OCR Scanner', path: '/image/to-text' },
-    { label: 'Favicon Gen', path: '/image/favicon-generator' },
-    { label: 'SEO Tags', path: '/seo/meta-tags' }
+    { label: 'Free PDF to Word Tool', path: '/pdf/to-word' },
+    { label: 'AI Video to Blog Generator', path: '/ai/video-to-blog' },
+    { label: 'Best Online Image OCR', path: '/image/to-text' },
+    { label: 'Professional Favicon Gen', path: '/image/favicon-generator' },
+    { label: 'SEO Meta Tag Optimizer', path: '/seo/meta-tags' }
   ];
+
+  const homeFaqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is Tooolify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tooolify is the ultimate free online AI tool website, offering over 100 utilities including image converters, SEO generators, PDF tools, and developer utilities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Tooolify free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, all tools on Tooolify are 100% free with no hidden charges, and no account registration is required to access our core utilities."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my files secure on Tooolify?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Most of our tools process files locally in your browser, and we never store your personal data or uploaded documents on our servers."
+        }
+      }
+    ]
+  };
 
   return (
     <div className="space-y-32 pb-32 overflow-hidden">
       <SEO 
-        title="Tooolify | The Ultimate AI Tool Website & Digital Directory" 
-        description="Discover the best AI tool website featuring 100+ free online utilities. Fast, secure AI generators, converters, and developer tools. No signup required."
-        keywords={['ai tool website', 'best ai directory', 'free online ai tools', 'ai content generators', 'developer utilities online', 'seo ai tools']}
+        title="Tooolify | #1 Free AI Tool Website & Online Utilities" 
+        description="Access over 100+ free online utilities on Tooolify, the best AI tool website for creators. Fast, secure, and always free online tools for everyone."
+        keywords={['free ai tool website', 'online utilities', 'best ai generators', 'seo tools online', 'developer tools', 'ai document converter']}
+        schema={homeFaqSchema}
       />
 
       {/* Hero Section */}

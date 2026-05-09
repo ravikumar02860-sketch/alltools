@@ -28,6 +28,27 @@ export const SEO: React.FC<SEOProps> = ({
   const cleanPath = window.location.pathname.replace(/\/+$/, '') || '/';
   const currentUrl = canonical ? (canonical.startsWith('http') ? canonical : `${siteUrl}${canonical}`) : `${siteUrl}${cleanPath}`;
 
+  // Default Breadcrumb Schema
+  const pathSegments = cleanPath.split('/').filter(Boolean);
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": siteUrl
+      },
+      ...pathSegments.map((segment, index) => ({
+        "@type": "ListItem",
+        "position": index + 2,
+        "name": segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' '),
+        "item": `${siteUrl}/${pathSegments.slice(0, index + 1).join('/')}`
+      }))
+    ]
+  };
+
   return (
     <Helmet>
       <title>{fullTitle}</title>
@@ -41,7 +62,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta property="og:description" content={description} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
-      <meta property="og:image" content={ogImage} />
+      <meta property="og:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content="en_US" />
       
@@ -49,7 +70,7 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={fullTitle} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={ogImage} />
+      <meta name="twitter:image" content={ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`} />
       <meta name="twitter:site" content="@tooolify" />
 
       {/* Mobile & Theme */}
@@ -57,6 +78,10 @@ export const SEO: React.FC<SEOProps> = ({
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+      {/* Structured Data */}
+      <script type="application/ld+json">
+        {JSON.stringify(breadcrumbSchema)}
+      </script>
       {schema && (
         <script type="application/ld+json">
           {JSON.stringify(schema)}
