@@ -29,6 +29,23 @@
   .premium-shadow {
     box-shadow: 0 0 0 1px rgba(0,0,0,.03), 0 2px 4px rgba(0,0,0,.05), 0 12px 24px rgba(0,0,0,.05);
   }
+
+  /* Prevent ad scripts from creating full-page invisible overlays that intercept clicks */
+  /* This targets dynamically injected layers often used by pop-under scripts */
+  #root ~ div[style*="fixed"][style*="z-index: 2147483647"],
+  #root ~ div[style*="fixed"][style*="z-index: 999999"],
+  #root ~ div[style*="absolute"][style*="z-index: 2147483647"],
+  body > div[style*="position: fixed"][style*="left: 0"][style*="top: 0"][style*="width: 100%"][style*="height: 100%"] {
+    display: none !important;
+    pointer-events: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+  }
+
+  /* Ensure our ad containers don't block clicks when they are empty or transparent */
+  [id^="ad-container-"] {
+    pointer-events: auto;
+  }
 }
 
 /* Custom Scrollbar */
