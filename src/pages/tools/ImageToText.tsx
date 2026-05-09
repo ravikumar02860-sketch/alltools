@@ -23,6 +23,7 @@ export const ImageToText: React.FC = () => {
   const [text, setText] = React.useState('');
   const [isProcessing, setIsProcessing] = React.useState(false);
   const [progress, setProgress] = React.useState(0);
+  const [error, setError] = React.useState<string | null>(null);
   const [copied, setCopied] = React.useState(false);
   const fileInputRef = React.useRef<HTMLInputElement>(null);
 
@@ -43,6 +44,7 @@ export const ImageToText: React.FC = () => {
     if (!image) return;
     setIsProcessing(true);
     setText('');
+    setError(null);
     
     try {
       const worker = await createWorker('eng', 1, {
@@ -55,9 +57,9 @@ export const ImageToText: React.FC = () => {
       const { data: { text: result } } = await worker.recognize(image);
       setText(result);
       await worker.terminate();
-    } catch (error) {
-      console.error('OCR Error:', error);
-      alert('Failed to process image. Please try another one.');
+    } catch (e) {
+      console.error('OCR Error:', e);
+      setError('Failed to process image. Please ensure the image contains clear text and try again.');
     } finally {
       setIsProcessing(false);
       setProgress(100);
@@ -198,6 +200,21 @@ For the highest accuracy, ensure your image is:
                       </div>
                     </div>
                   )}
+
+                  <AnimatePresence>
+                    {error && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-xs font-bold uppercase tracking-widest">
+                          <AlertCircle size={16} />
+                          {error}
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
 
                 {/* Right Side: Results */}

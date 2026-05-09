@@ -3,7 +3,7 @@ import { useParams, Link } from 'react-router-dom';
 import { ToolPage } from '../../components/ToolPage';
 import { tools } from '../../lib/tools';
 import { motion, AnimatePresence } from 'motion/react';
-import { Sparkles, ArrowRight, Zap, Shield, Clock, MousePointer2, Loader2, Copy, Check, Download } from 'lucide-react';
+import { Sparkles, ArrowRight, Zap, Shield, Clock, MousePointer2, Loader2, Copy, Check, Download, AlertCircle } from 'lucide-react';
 import { generateContent } from '../../services/geminiService';
 
 export const GenericAITool: React.FC = () => {
@@ -13,6 +13,7 @@ export const GenericAITool: React.FC = () => {
   const [prompt, setPrompt] = React.useState('');
   const [result, setResult] = React.useState('');
   const [isGenerating, setIsGenerating] = React.useState(false);
+  const [error, setError] = React.useState<string | null>(null);
   const [copied, setCopied] = React.useState(false);
 
   if (!tool) {
@@ -25,9 +26,14 @@ export const GenericAITool: React.FC = () => {
   }
 
   const handleGenerate = async () => {
-    if (!prompt.trim()) return;
+    if (!prompt.trim()) {
+      setError('Please enter some text or requirements first.');
+      return;
+    }
+    
     setIsGenerating(true);
     setResult('');
+    setError(null);
     
     try {
       const fullPrompt = `You are a high-performance AI assistant for the tool "${tool.name}". 
@@ -38,9 +44,9 @@ export const GenericAITool: React.FC = () => {
       
       const response = await generateContent(fullPrompt);
       setResult(response);
-    } catch (error) {
-      console.error('Generation error:', error);
-      alert('Failed to generate content. Please try again.');
+    } catch (e) {
+      console.error('Generation error:', e);
+      setError(e instanceof Error ? e.message : 'An unexpected error occurred. Please try again.');
     } finally {
       setIsGenerating(false);
     }
@@ -136,6 +142,22 @@ Start using the **${tool.name}** today and experience the future of digital prod
                   <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
+
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-sm font-bold">
+                      <AlertCircle size={18} />
+                      {error}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <AnimatePresence>

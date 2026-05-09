@@ -16,7 +16,8 @@ import {
   Download,
   Languages,
   Bookmark,
-  Zap
+  Zap,
+  Info
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { GoogleGenAI } from "@google/genai";
@@ -27,10 +28,31 @@ export const VideoToBlogAI: React.FC = () => {
   const [result, setResult] = React.useState<any>(null);
   const [activeTab, setActiveTab] = React.useState<'blog' | 'transcript' | 'social' | 'seo'>('blog');
   const [language, setLanguage] = React.useState<'en' | 'hi' | 'hinglish'>('en');
+  const [error, setError] = React.useState<string | null>(null);
+
+  const validateYoutubeUrl = (urlString: string) => {
+    try {
+      const urlObj = new URL(urlString);
+      return urlObj.hostname.includes('youtube.com') || urlObj.hostname.includes('youtu.be');
+    } catch {
+      return false;
+    }
+  };
 
   const handleConvert = async () => {
-    if (!url) return;
+    if (!url.trim()) {
+      setError('Please paste a YouTube URL first.');
+      return;
+    }
+
+    if (!validateYoutubeUrl(url)) {
+      setError('Please provide a valid YouTube URL (e.g., https://youtube.com/watch?v=...)');
+      return;
+    }
+
     setStatus('processing');
+    setError(null);
+    setResult(null);
     
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
@@ -62,13 +84,23 @@ export const VideoToBlogAI: React.FC = () => {
         }
       });
 
-      const data = JSON.parse(response.text || '{}');
+      if (!response.text) {
+        throw new Error("The AI returned an empty response. This might be due to safety restrictions for this specific video.");
+      }
+
+      const data = JSON.parse(response.text);
       setResult(data);
       setStatus('done');
-    } catch (error) {
-      console.error('Error generating blog:', error);
+    } catch (e: any) {
+      console.error('Error generating blog:', e);
       setStatus('idle');
-      alert('Failed to generate content. Please ensure the URL is correct and try again.');
+      
+      let msg = "Failed to generate content. Please try again.";
+      if (e.message?.includes('API key')) msg = "Invalid API configuration. Please contact admin.";
+      if (e.message?.includes('JSON')) msg = "Failed to parse the AI output. Try again in a few moments.";
+      if (e.message?.includes('quota')) msg = "Daily AI limit reached. Please try again tomorrow.";
+      
+      setError(e instanceof Error ? e.message : msg);
     }
   };
 
@@ -137,6 +169,19 @@ export const VideoToBlogAI: React.FC = () => {
                   )}
                 </button>
               </div>
+
+              <AnimatePresence>
+                {error && (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="p-4 bg-red-50 border border-red-100 rounded-2xl flex items-center gap-3 text-red-600 text-sm font-bold"
+                  >
+                    <AlertCircle size={18} />
+                    {error}
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-6 pt-4">
