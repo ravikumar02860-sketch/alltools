@@ -6,6 +6,8 @@ import { Home, Search, Menu, X, ArrowRight, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { tools } from '@/src/lib/tools';
 
+import { AdPlacement } from './AdPlacement';
+
 export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -116,7 +118,10 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </div>
       </header>
 
-      <div className="flex flex-1 container mx-auto px-4 py-8 gap-8">
+      <AdPlacement type="header" />
+      <div className="flex flex-1 container mx-auto px-4 py-8 gap-8 relative">
+        <AdPlacement type="side-left" />
+        <AdPlacement type="side-right" />
         {/* Sidebar */}
         <aside className={cn(
           "fixed inset-y-0 left-0 z-40 w-64 bg-white border-r transform transition-transform duration-300 ease-in-out lg:relative lg:translate-x-0 lg:bg-transparent lg:border-none",
@@ -195,6 +200,7 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         </main>
       </div>
 
+      <AdPlacement type="footer" />
       {/* Footer */}
       <footer className="bg-white border-t py-12 mt-auto">
         <div className="container mx-auto px-4">
